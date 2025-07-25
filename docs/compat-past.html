@@ -1,0 +1,275 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>過去に体験した互換性の問題 &mdash; Arm64X  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=a6a68382" />
+      <link rel="stylesheet" type="text/css" href="_static/fonts.css?v=5583d106" />
+
+  
+    <link rel="canonical" href="https://kkdf2.sakura.ne.jp/arm64x/compat-past.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=c033477b"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=4755f45a"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="next" title="互換性の問題 詳しく" href="co/index.html" />
+    <link rel="prev" title="互換性とは" href="compat-core.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Arm64X
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="pinch.html">危機感: Copilot+ PC と Arm</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="copilotpluspc-and-arm.html">Copilot+ PC は Arm 固有ではない?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="copilotpluspc-spec.html">Copilot+ PC の要件とは</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yahoo-news.html">Yahoo!ニュース のコメント覧 など</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sense-of-danger.html">Deprecated features への危機感</a></li>
+<li class="toctree-l2"><a class="reference internal" href="error.html">錯誤</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compat-core.html">互換性とは</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">過去に体験した互換性の問題</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ms-dos-windows">MS-DOS から Windows への移行 について</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#windows-9x-windows-nt">Windows 9x から Windows NT への移行 について</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amd64-not-ia64">32 ビットから 64 ビット (AMD64, not IA64) への移行について</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="co/index.html">互換性の問題 詳しく</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer-wants.html">OSS で助けを必要としています</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="process-interop-odbc-issue.html">EXE と DLL との関係 (プロセスの相互運用性)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="at-dev-dept.html">開発部の課題</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Arm64X</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="pinch.html">危機感: Copilot+ PC と Arm</a></li>
+      <li class="breadcrumb-item active">過去に体験した互換性の問題</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>過去に体験した互換性の問題<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>「互換性」を犠牲にしてきた歴史は、今回に始まったことではありません。
+今までにも何度か技術的なパラダイムシフトがありました。その度に、古いものはソフト・ハードを問わず、商業的な理由 (主に採算が取れないなど) で切り捨てられてきました。</p>
+<p>例:</p>
+<ul class="simple">
+<li><p>MS-DOS から Windows への移行</p></li>
+<li><p>Windows 9x から Windows NT への移行</p></li>
+<li><p>32 ビットから 64 ビットへの移行 (Windows Vista, 7, 8, 10, 11)</p></li>
+</ul>
+<p>これはプロダクトデザインの問題でありますので、
+別にこの方針に異を唱える気はありません。</p>
+<p>但し、その方向性が消費者の求める方向性と異にするのであれば、
+話は違って参ります。</p>
+<p>例えば、そのプラットフォームに持続可能性はあるのか、です。</p>
+<section id="ms-dos-windows">
+<h2>MS-DOS から Windows への移行 について<a class="headerlink" href="#ms-dos-windows" title="Link to this heading"></a></h2>
+<p>よくなった点</p>
+<ul>
+<li><p>RAM 容量 (640 KB) の壁がなくなりました</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>アプリが画像などの大きなデータを容易に扱えるようになりました。
+MS-DOS までは、文字情報の入出力や印刷が主体でした</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Windows がハードウェアを一元管理するようになりました</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>MS-DOS アプリの時代は、アプリごと、ゲームごとに、ハードウェアとドライバーとの対応有無がありました</p></li>
+<li><p>Windows では、ディスプレイ・プリンター・サウンドカードなど周辺機器については OS が一元管理します</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>共通基盤 (Windows API) と SDK が提供されるようになりました</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>MS-DOS アプリでは MS-DOS コール、 BIOS コール、 低レベル I/O コールなど様々な手段を利用して、 直接ハードウェアとの対話をする必要性がありました</p></li>
+<li><p>Windows アプリは Windows API を通して、間接的にハードウェアと対話します。 これにより、 Windows アプリが直接ハードウェアとの対話をする事は許可されなくなりました</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>国産機 (NEC PC-98 シリーズ) と海外機 (IBM PC-AT 互換機) の壁がなくなりました</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>言語は違えど、海外版のアプリも日本語版 Windows で動作しました</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>よくなかった点</p>
+<ul>
+<li><p>MS-DOS アプリからの移行について、暗中模索していく必要がありました</p>
+<blockquote>
+<div><ul>
+<li><p>移行のスピード感について</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>移行はかなりゆるやかに進んでいきましたので、 大きな問題にはなりませんでした</p></li>
+<li><p>この頃はネットがありません。 一方で、 Nitfy Serve や PC-VAN など、電話回線を経由して文字情報をやり取りするパソコン通信がありました</p></li>
+<li><p>主な情報源は、月単位で発行される、パソコン系の技術雑誌 (物理) でした</p></li>
+<li><p>CD-ROM が 1 枚以上、添付される雑誌も結構あり、 メーカーからの更新プログラムが配布されることもありました</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>日本語入力について</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>(記憶にはありませんが) Windows 3.1 には MS-IME が搭載されていたようです</p></li>
+<li><p>のちに ATOK など様々な日本語入力システムが Windows 向けにリリースされています</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="windows-9x-windows-nt">
+<h2>Windows 9x から Windows NT への移行 について<a class="headerlink" href="#windows-9x-windows-nt" title="Link to this heading"></a></h2>
+<p>よくなった点</p>
+<ul>
+<li><p>Windows NT は堅牢であり拡張性もあり、様々な消費者ニーズに応えられるようになりました</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>アプリが不具合により強制終了しても OS は安定動作を続けることができました</p></li>
+<li><p>Unicode に標準対応しました。 これにより多言語対応が促進されました</p></li>
+<li><p>ファイルシステムがモジュール式になりました (Windows IFS): FAT, HPFS, NTFS, CDFS (ISO 9660), UDFS (UDF), Dokan, exFAT, ReFS など Microsoft 内外で多数のモジュールが開発されました</p></li>
+<li><p>サブシステムが導入されました。 1 つの OS で複数のプラットフォームに対応できるようになりました。例: WOW, WoW64, WOW64, WSL</p></li>
+<li><p>Windows サービスが導入されました</p></li>
+<li><p>近代的な 32 ビット OS の仲間入りをしたことで Linux など他の OS 向けに開発された多数のアプリが Windows へ移植されました</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>NTFS の利用により 4GB を超えるファイルの取り扱いができるようになりました。</p></li>
+<li><p>業務利用するうえで信頼性の高い先進機能を多数搭載していました</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>NTFS ファイルシステム</p></li>
+<li><p>ネットワーク機能</p></li>
+<li><p>マルチユーザー環境</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>よくなかった点</p>
+<ul class="simple">
+<li><p>メモリ管理に欠陥のあるアプリ・ゲームが起動できませんでした (当時の PaintShop Pro など)</p></li>
+<li><p>Windows 9x のプリンタードライバーが全く使用できませんでした</p></li>
+<li><p>ジョイパッドなど一部のコントローラーのドライバーが提供されておらず使用できませんでした</p></li>
+<li><p>一部の SCSI デバイスのドライバーが提供されておらず使用できませんでした (例: 画像スキャナー)</p></li>
+<li><p>ウィルス対策ソフトなど、Windows カーネルに干渉するタイプのソフトが未対応であり使用できませんでした</p></li>
+</ul>
+</section>
+<section id="amd64-not-ia64">
+<h2>32 ビットから 64 ビット (AMD64, not IA64) への移行について<a class="headerlink" href="#amd64-not-ia64" title="Link to this heading"></a></h2>
+<p>よくなった点</p>
+<ul>
+<li><p>4GB の壁、の突破</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>メモリーが安価になり 4GB 以上のメモリーを搭載するパソコンも珍しくなくなりました</p></li>
+<li><p>しかし 32 ビットアプリのメモリ空間は 4GB のままでした</p></li>
+<li><p>Windows OS も同様の制約を受けます。 4GB 以上のメモリーを搭載しても認識されないという問題がありました (PAE による緩和策あり)</p></li>
+<li><p>これを解決するべく 64 ビット Windows が登場しました</p></li>
+<li><p>Windows をコア業務として利用しているユーザー層 (CAD での作図、動画編集など) にとっては歓迎されました</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>既存のハードウェアの流用ができました</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>32 ビット OS と 64 ビット OS との別に関わらず、
+CPU が 64 ビット環境に対応していれば、インストールができました</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>よくなかった点</p>
+<ul class="simple">
+<li><p>一部のアプリで一部の機能が正常に動作しませんでした</p></li>
+<li><p>プリンタードライバーがメーカーの対応待ちで使用できませんでした</p></li>
+<li><p>同様に、一部の周辺機器のドライバー (USB ドングル等) が 64 ビット OS に対応しておらず使用できませんでした</p></li>
+<li><p>ウィルス対策ソフトなど、Windows カーネルに干渉するタイプのソフトが未対応であり使用できませんでした</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="compat-core.html" class="btn btn-neutral float-left" title="互換性とは" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="co/index.html" class="btn btn-neutral float-right" title="互換性の問題 詳しく" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, kenjiuno.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

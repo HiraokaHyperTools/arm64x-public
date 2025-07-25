@@ -1,0 +1,147 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>互換性とは &mdash; Arm64X  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=a6a68382" />
+      <link rel="stylesheet" type="text/css" href="_static/fonts.css?v=5583d106" />
+
+  
+    <link rel="canonical" href="https://kkdf2.sakura.ne.jp/arm64x/compat-core.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=c033477b"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=4755f45a"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="next" title="過去に体験した互換性の問題" href="compat-past.html" />
+    <link rel="prev" title="錯誤" href="error.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Arm64X
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="pinch.html">危機感: Copilot+ PC と Arm</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="copilotpluspc-and-arm.html">Copilot+ PC は Arm 固有ではない?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="copilotpluspc-spec.html">Copilot+ PC の要件とは</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yahoo-news.html">Yahoo!ニュース のコメント覧 など</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sense-of-danger.html">Deprecated features への危機感</a></li>
+<li class="toctree-l2"><a class="reference internal" href="error.html">錯誤</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">互換性とは</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compat-past.html">過去に体験した互換性の問題</a></li>
+<li class="toctree-l2"><a class="reference internal" href="co/index.html">互換性の問題 詳しく</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer-wants.html">OSS で助けを必要としています</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="process-interop-odbc-issue.html">EXE と DLL との関係 (プロセスの相互運用性)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="at-dev-dept.html">開発部の課題</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Arm64X</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="pinch.html">危機感: Copilot+ PC と Arm</a></li>
+      <li class="breadcrumb-item active">互換性とは</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>互換性とは<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>「見えてくる Windows 11 + Arm CPU の不利と劣勢」 ここが今日の本題です。</p>
+<p>Windows という OS は「過去の資産」に対する「互換性」が一番のウリであるのにも関わらず、
+Arm CPU 環境においては、その利点を一部犠牲にしています。</p>
+<p>そもそも、互換性とは何を意味するのでしょうか。試しに明文化してみます:</p>
+<ul class="simple">
+<li><p>従来使用していた PC から Copilot+ PC へ移行した後に、どの程度、日常の作業が支障なく達成できるかの度合い</p></li>
+</ul>
+<p>消費者は <code class="docutils literal notranslate"><span class="pre">日常の作業の達成</span></code> と <code class="docutils literal notranslate"><span class="pre">生産性が低下しないこと</span></code> を求めます。</p>
+<p>互換性が低下することで、どういった問題があるのでしょうか。</p>
+<p>1 つには 「新しく発生した問題を解決するために、余分な時間コストが発生する点」 が挙げられます。</p>
+<p>時間は大切です。</p>
+<p>時間をかけても解決ができればそれで良いのですが、解決できない問題があった場合は…?</p>
+<p>努力が報われることなく徒労に終わってしまう。</p>
+<p>こういった結末を嫌う心理が根底にあるのだと思います。</p>
+<p>これを回避するにはどういった方法が考えられますか。例としては:</p>
+<ul class="simple">
+<li><p>x64 版 Windows 11 デバイスを選択する事</p></li>
+<li><p>相談相手が居る事</p></li>
+<li><p>代替の手段を見つけられる事</p></li>
+<li><p>時間が解決する問題なのであれば、どの程度の期間が必要になるかについて認知する事</p></li>
+<li><p>自分の体験について情報発信をする事</p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="error.html" class="btn btn-neutral float-left" title="錯誤" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="compat-past.html" class="btn btn-neutral float-right" title="過去に体験した互換性の問題" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, kenjiuno.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

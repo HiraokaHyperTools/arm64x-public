@@ -1,0 +1,163 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SoftEther VPN Client &mdash; Arm64X  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=a6a68382" />
+      <link rel="stylesheet" type="text/css" href="../_static/fonts.css?v=5583d106" />
+
+  
+    <link rel="canonical" href="https://kkdf2.sakura.ne.jp/arm64x/co/softether-vpn-client.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c033477b"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="キヤノン iR-ADV C3835" href="ir-adv-c3835.html" />
+    <link rel="prev" title="ブラザー DCP-J982N" href="dcp-j982n.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Arm64X
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../pinch.html">危機感: Copilot+ PC と Arm</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../copilotpluspc-and-arm.html">Copilot+ PC は Arm 固有ではない?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../copilotpluspc-spec.html">Copilot+ PC の要件とは</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../yahoo-news.html">Yahoo!ニュース のコメント覧 など</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sense-of-danger.html">Deprecated features への危機感</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../error.html">錯誤</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../compat-core.html">互換性とは</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../compat-past.html">過去に体験した互換性の問題</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">互換性の問題 詳しく</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="index.html#id2">大雑把に</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#id3">個別具体的に (検証結果)</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="index.html#id4">問題なし</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index.html#id5">事情あり</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="index.html#id6">利用できず</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index.html#id7">未確認または確認中</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer-wants.html">OSS で助けを必要としています</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../process-interop-odbc-issue.html">EXE と DLL との関係 (プロセスの相互運用性)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../at-dev-dept.html">開発部の課題</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Arm64X</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../pinch.html">危機感: Copilot+ PC と Arm</a></li>
+          <li class="breadcrumb-item"><a href="index.html">互換性の問題 詳しく</a></li>
+      <li class="breadcrumb-item active">SoftEther VPN Client</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="softether-vpn-client">
+<h1>SoftEther VPN Client<a class="headerlink" href="#softether-vpn-client" title="Link to this heading"></a></h1>
+<p>セットアップは問題なく完了しました。</p>
+<p>しかし、仮想 VPN アダプターのインストールができず、接続ができませんでした。</p>
+<p><a class="reference external" href="https://www.softether-download.com/ja.aspx?product=softether">SoftEther ダウンロード センター</a></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>SoftEther VPN Client
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Intel (x86 and x64)
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>SoftEther VPN Client (Ver 4.44, Build 9807, rtm)
+softether-vpnclient-v4.44-9807-rtm-2025.04.16-windows-x86_x64-intel.exe (53.64 MB)
+[Non-SSL (HTTP) Download Link] Try this if the above link fails because your HTTP client doesn&#39;t support TLS 1.2.
+リリース日: 2025-04-16  &lt;最新ビルド&gt;
+バージョン更新履歴 (ChangeLog)
+言語: English, Japanese, Simplified Chinese
+OS: Windows, CPU: Intel (x86 and x64)
+(Windows 98 / 98 SE / ME / NT 4.0 SP6a / 2000 SP4 / XP SP2, SP3 / Vista SP1, SP2 / 7 SP1 / 8 / 8.1 / 10 / 11 / Server 2003 SP2 / Server 2008 SP1, SP2 / Hyper-V Server 2008 / Server 2008 R2 SP1 / Hyper-V Server 2008 R2 / Server 2012 / Hyper-V Server 2012 / Server 2012 R2 / Hyper-V Server 2012 R2 / Server 2016 / Server 2019 / Server 2022)
+</pre></div>
+</div>
+<p>但し、SoftEther VPN Client 以外のプロトコルを利用することで SoftEther VPN Server との接続ができる方法もあります:</p>
+<ul class="simple">
+<li><p>L2TP/IPsec</p></li>
+<li><p>OpenVPN</p></li>
+<li><p>SSTP</p></li>
+</ul>
+<p>※ 事前設定が必要です。</p>
+<p>その場合でも SoftEther VPN Client は使用しませんので、セットアップは不要です。</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dcp-j982n.html" class="btn btn-neutral float-left" title="ブラザー DCP-J982N" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ir-adv-c3835.html" class="btn btn-neutral float-right" title="キヤノン iR-ADV C3835" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, kenjiuno.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

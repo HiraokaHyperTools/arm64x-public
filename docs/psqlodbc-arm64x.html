@@ -1,0 +1,199 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>psqlodbc_arm64.msi (Arm64X) &mdash; Arm64X  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=a6a68382" />
+      <link rel="stylesheet" type="text/css" href="_static/fonts.css?v=5583d106" />
+
+  
+    <link rel="canonical" href="https://kkdf2.sakura.ne.jp/arm64x/psqlodbc-arm64x.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=c033477b"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=4755f45a"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="next" title="EXE を配布する場合" href="dist-exe.html" />
+    <link rel="prev" title="psqlodbc_arm64.msi (Arm64)" href="psqlodbc-arm64.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Arm64X
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="pinch.html">危機感: Copilot+ PC と Arm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="process-interop-odbc-issue.html">EXE と DLL との関係 (プロセスの相互運用性)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="at-dev-dept.html">開発部の課題</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#arm64-arm64x">Arm64 / Arm64X 対応方針の案について</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#arm64x">Arm64X とは</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#id2">Arm64 と Arm64X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#arm64-exe">Arm64 バイナリー (EXE) で充分な場合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#arm64-dll">Arm64 バイナリー (DLL) で充分な場合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#arm64x-dll">Arm64X バイナリー (DLL) が必要な場合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#id3">Arm64X の使い所</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#arm64ec">Arm64EC の落とし穴</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#id4">Arm64 バイナリーではダメなのか (Arm64X が必要な理由)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#id5">Arm64X バイナリーの判別方法について</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="at-dev-dept.html#psqlodbc-arm64">psqlODBC を実際に Arm64 環境で使用してみる</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="psqlodbc-x64.html">psqlodbc_x64.msi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="psqlodbc-arm64.html">psqlodbc_arm64.msi (Arm64)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">psqlodbc_arm64.msi (Arm64X)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#id6">Arm64X バイナリーのビルド方法について</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#oss">OSS のビルドシステム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#id7">問題点の認識状況</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#pseudo-arm64x-coff">pseudo-ARM64X COFF (仮) の提案と実装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#os">偏りのある対応 OS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#id8">依存関係の洗い出し</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#id9">レガシーコードと最新のコンパイラー</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#windows-11">Windows 11 との互換性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#id10">ビルドシステムの改修とコストの問題</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#id11">セットアップの構築案</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Arm64X</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="at-dev-dept.html">開発部の課題</a></li>
+      <li class="breadcrumb-item active">psqlodbc_arm64.msi (Arm64X)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="psqlodbc-arm64-msi-arm64x">
+<h1>psqlodbc_arm64.msi (Arm64X)<a class="headerlink" href="#psqlodbc-arm64-msi-arm64x" title="Link to this heading"></a></h1>
+<p>つぎのセットアップをダウンロードして、インストールしようとしています。</p>
+<p><a class="reference external" href="https://github.com/psqlodbc-for-win10-arm64/psqlodbc/releases/download/17.00.0004-arm64x.alpha3/psqlodbc_arm64_msi_signed.msi">https://github.com/psqlodbc-for-win10-arm64/psqlodbc/releases/download/17.00.0004-arm64x.alpha3/psqlodbc_arm64_msi_signed.msi</a></p>
+<img alt="_images/c1.png" src="_images/c1.png" />
+<img alt="_images/c2.png" src="_images/c2.png" />
+<img alt="_images/c3.png" src="_images/c3.png" />
+<img alt="_images/c4.png" src="_images/c4.png" />
+<img alt="_images/c5.png" src="_images/c5.png" />
+<p>インストールが完了しました。</p>
+<p>つぎに ODBC データソースの設定をしていきます。</p>
+<p>この Windows 11 の odbcad32 は 2 つです:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ODBC</span> <span class="pre">Data</span> <span class="pre">Source</span> <span class="pre">Administrator</span> <span class="pre">(32-bit)</span></code> (x86 版)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ODBC</span> <span class="pre">Data</span> <span class="pre">Source</span> <span class="pre">Administrator</span> <span class="pre">(64-bit)</span></code> (Arm64 版)</p></li>
+</ul>
+<img alt="_images/a64-odbcad321.png" src="_images/a64-odbcad321.png" />
+<p><code class="docutils literal notranslate"><span class="pre">ODBC</span> <span class="pre">Data</span> <span class="pre">Sources</span> <span class="pre">(64-bit)</span></code> を起動し <code class="docutils literal notranslate"><span class="pre">Add</span></code> で <code class="docutils literal notranslate"><span class="pre">PostgreSQL</span> <span class="pre">Unicode(x64)</span></code> を選択して <code class="docutils literal notranslate"><span class="pre">Finish</span></code> をクリック:</p>
+<img alt="_images/a64-odbcad32-641.png" src="_images/a64-odbcad32-641.png" />
+<p><code class="docutils literal notranslate"><span class="pre">PostgreSQL</span> <span class="pre">Unicode</span> <span class="pre">ODBC</span> <span class="pre">Driver(psqlODBC)</span> <span class="pre">Setup</span></code> 画面が起動しました:</p>
+<img alt="_images/odbcad32-64-add-psqlodbc1.png" src="_images/odbcad32-64-add-psqlodbc1.png" />
+<p>接続情報を入力して <code class="docutils literal notranslate"><span class="pre">Test</span></code> をクリック。
+<code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">successful</span></code> が表示されました。
+正常に動作しているようです。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>---------------------------
+Connection Test
+---------------------------
+Connection successful
+---------------------------
+OK
+---------------------------
+</pre></div>
+</div>
+<img alt="_images/odbcad32-64-add-psqlodbc-ok1.png" src="_images/odbcad32-64-add-psqlodbc-ok1.png" />
+<p><code class="docutils literal notranslate"><span class="pre">OK</span></code> をクリック、
+<code class="docutils literal notranslate"><span class="pre">Save</span></code> をクリックして、設定を保存します。</p>
+<p>Microsoft Access で確認します。</p>
+<ul class="simple">
+<li><p>起動</p></li>
+<li><p>テスト用のデータベースを開き</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">External</span> <span class="pre">Data</span></code> タブを開く</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Data</span> <span class="pre">Source</span></code> → <code class="docutils literal notranslate"><span class="pre">From</span> <span class="pre">Other</span> <span class="pre">Sources</span></code> → <code class="docutils literal notranslate"><span class="pre">ODBC</span> <span class="pre">Database</span></code> を選択</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Link</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">data</span> <span class="pre">source</span> <span class="pre">by</span> <span class="pre">creating</span> <span class="pre">a</span> <span class="pre">linked</span> <span class="pre">table.</span></code> を選択し <code class="docutils literal notranslate"><span class="pre">OK</span></code> をクリック</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">Data</span> <span class="pre">Source</span></code> 画面が表示されます:</p>
+<img alt="_images/access-dsn1.png" src="_images/access-dsn1.png" />
+<p><code class="docutils literal notranslate"><span class="pre">PostgreSQL35W</span></code> を選択して <code class="docutils literal notranslate"><span class="pre">OK</span></code> をクリックすると、
+<code class="docutils literal notranslate"><span class="pre">Link</span> <span class="pre">Tables</span></code> 画面が表示されました。</p>
+<img alt="_images/link-tables.png" src="_images/link-tables.png" />
+<p>事前に設定しておいた <code class="docutils literal notranslate"><span class="pre">public.key_value_pair</span></code> テーブルを選択して <code class="docutils literal notranslate"><span class="pre">OK</span></code> をクリック:</p>
+<p><code class="docutils literal notranslate"><span class="pre">public_key_value_pair</span></code> リンクテーブルが作成されました。これを開きました:</p>
+<img alt="_images/kvp.png" src="_images/kvp.png" />
+<p>ここまでの流れで Arm64 環境における Microsoft Access と psqlODBC との動作確認ができました。</p>
+<p>Arm64X バイナリーである psqlODBC は、</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ODBC</span> <span class="pre">Data</span> <span class="pre">Source</span> <span class="pre">Administrator</span> <span class="pre">(64-bit)</span></code> (Arm64) で動作しました。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Microsoft</span> <span class="pre">Access</span></code> (Arm64EC (x64)) で動作しました。</p></li>
+</ul>
+<p>Arm 版 Windows 11 環境向けに Arm64X バイナリーのビルドと配布が必要になる理由を確認できました。</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="psqlodbc-arm64.html" class="btn btn-neutral float-left" title="psqlodbc_arm64.msi (Arm64)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dist-exe.html" class="btn btn-neutral float-right" title="EXE を配布する場合" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, kenjiuno.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

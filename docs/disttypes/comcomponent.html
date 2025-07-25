@@ -1,0 +1,235 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COM コンポーネントを配布したい &mdash; Arm64X  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=a6a68382" />
+      <link rel="stylesheet" type="text/css" href="../_static/fonts.css?v=5583d106" />
+
+  
+    <link rel="canonical" href="https://kkdf2.sakura.ne.jp/arm64x/disttypes/comcomponent.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c033477b"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="psqlodbc_x64.msi" href="../psqlodbc-x64.html" />
+    <link rel="prev" title="ActiveX コントロールを配布したい" href="activexcontrol.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Arm64X
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../pinch.html">危機感: Copilot+ PC と Arm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../process-interop-odbc-issue.html">EXE と DLL との関係 (プロセスの相互運用性)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../at-dev-dept.html">開発部の課題</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../at-dev-dept.html#arm64-arm64x">Arm64 / Arm64X 対応方針の案について</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="standalone.html">スタンドロンのアプリを配布したい</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imetsf.html">IME &amp; TSF を配布したい</a></li>
+<li class="toctree-l3"><a class="reference internal" href="odbcdriver.html">ODBC ドライバーを配布したい</a></li>
+<li class="toctree-l3"><a class="reference internal" href="activexcontrol.html">ActiveX コントロールを配布したい</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">COM コンポーネントを配布したい</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dll">DLL の構成</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">セットアップの構成</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nsis">NSIS セットアップでの判定方法の例</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../at-dev-dept.html#arm64x">Arm64X とは</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../at-dev-dept.html#id2">Arm64 と Arm64X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../at-dev-dept.html#arm64-exe">Arm64 バイナリー (EXE) で充分な場合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../at-dev-dept.html#arm64-dll">Arm64 バイナリー (DLL) で充分な場合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../at-dev-dept.html#arm64x-dll">Arm64X バイナリー (DLL) が必要な場合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../at-dev-dept.html#id3">Arm64X の使い所</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../at-dev-dept.html#arm64ec">Arm64EC の落とし穴</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../at-dev-dept.html#id4">Arm64 バイナリーではダメなのか (Arm64X が必要な理由)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../at-dev-dept.html#id5">Arm64X バイナリーの判別方法について</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../at-dev-dept.html#psqlodbc-arm64">psqlODBC を実際に Arm64 環境で使用してみる</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../at-dev-dept.html#id6">Arm64X バイナリーのビルド方法について</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../at-dev-dept.html#oss">OSS のビルドシステム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../at-dev-dept.html#id7">問題点の認識状況</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../at-dev-dept.html#pseudo-arm64x-coff">pseudo-ARM64X COFF (仮) の提案と実装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../at-dev-dept.html#os">偏りのある対応 OS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../at-dev-dept.html#id8">依存関係の洗い出し</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../at-dev-dept.html#id9">レガシーコードと最新のコンパイラー</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../at-dev-dept.html#windows-11">Windows 11 との互換性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../at-dev-dept.html#id10">ビルドシステムの改修とコストの問題</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../at-dev-dept.html#id11">セットアップの構築案</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Arm64X</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../at-dev-dept.html">開発部の課題</a></li>
+      <li class="breadcrumb-item active">COM コンポーネントを配布したい</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="com">
+<h1>COM コンポーネントを配布したい<a class="headerlink" href="#com" title="Link to this heading"></a></h1>
+<section id="dll">
+<h2>DLL の構成<a class="headerlink" href="#dll" title="Link to this heading"></a></h2>
+<p>例えば Windows エクスプローラー 向けの サムネイル ハンドラー を配布する場合です:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CmdThumbGen.dll</span></code> (x86)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CmdThumbGen.dll</span></code> (x64)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CmdThumbGen.dll</span></code> (Arm64X)</p></li>
+</ul>
+<p>備考:</p>
+<ul class="simple">
+<li><p>COM コンポーネントは 32 ビット版と 64 ビット版のバイナリーを好みの場所へ配置できます。
+<code class="docutils literal notranslate"><span class="pre">レジストリ</span> <span class="pre">リダイレクター</span></code> の働きによります。</p></li>
+<li><p>CmdThumbGen の開発レポジトリはこちら:
+<a class="reference external" href="https://github.com/kenjiuno/ThumbGensPack">kenjiuno/ThumbGensPack: Thumbnail Generator pack for Windows 7 Explorer</a></p></li>
+<li><p>Arm64 版よりも Arm64X 版での配布が好ましいです</p></li>
+</ul>
+</section>
+<section id="id1">
+<h2>セットアップの構成<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>単一の NSIS セットアップにまとめる案が考えられます:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Setup_ThumbGensPack.exe</span></code> (Windows 7, 8.1, 10, 11 向け)</p></li>
+</ul>
+</section>
+<section id="nsis">
+<h2>NSIS セットアップでの判定方法の例<a class="headerlink" href="#nsis" title="Link to this heading"></a></h2>
+<p>公式の NSIS で作成したセットアップは x86 アプリとして動作します。</p>
+<p>NSIS スクリプトでは、プラットフォームを判別するための条件分岐を記述しつつ、プラットフォーム固有のアクションを追加していきます。</p>
+<div class="highlight-nsis notranslate"><div class="highlight"><pre><span></span><span class="c">; ...</span>
+
+<span class="cp">!define</span><span class="w"> </span>CmdThumbGen_X86<span class="w"> </span><span class="s2">&quot;CmdThumbGen\Release&quot;</span>
+<span class="cp">!define</span><span class="w"> </span>CmdThumbGen_X64<span class="w"> </span><span class="s2">&quot;CmdThumbGen\x64\Release&quot;</span>
+<span class="cp">!define</span><span class="w"> </span>CmdThumbGen_ARM64X<span class="w"> </span><span class="s2">&quot;CmdThumbGen\ARM64EC\Release&quot;</span>
+
+<span class="c">; ...</span>
+
+<span class="cp">!include</span><span class="w"> </span><span class="s2">&quot;LogicLib.nsh&quot;</span>
+<span class="cp">!include</span><span class="w"> </span><span class="s2">&quot;x64.nsh&quot;</span>
+
+<span class="c">; ...</span>
+
+<span class="k">Section</span><span class="w"> </span><span class="s2">&quot;CmdThumbGen 導入&quot;</span>
+<span class="w">  </span><span class="c">; Set output path to the installation directory.</span>
+<span class="w">  </span><span class="k">SetOutPath</span><span class="w"> </span><span class="vg">$INSTDIR</span>
+
+<span class="w">  </span><span class="k">File</span><span class="w"> </span><span class="s2">&quot;${CmdThumbGen_X86}\CmdThumbGen.dll&quot;</span>
+<span class="w">  </span><span class="k">File</span><span class="w"> </span><span class="s2">&quot;${CmdThumbGen_X86}\CmdThumbGen.pdb&quot;</span>
+
+<span class="w">  </span><span class="k">ExecWait</span><span class="w"> </span><span class="s1">&#39;REGSVR32 /s &quot;$OUTDIR\CmdThumbGen.dll&quot;&#39;</span><span class="w"> </span><span class="bp">$0</span>
+<span class="w">  </span><span class="k">DetailPrint</span><span class="w"> </span><span class="s2">&quot;結果: $0&quot;</span>
+<span class="k">SectionEnd</span>
+
+<span class="k">Section</span><span class="w"> </span><span class="na">/o</span><span class="w"> </span><span class="s2">&quot;CmdThumbGen(x64) 導入&quot;</span><span class="w"> </span>SEC_CMDTHUMBGEN_X64
+<span class="w">  </span><span class="c">; Set output path to the installation directory.</span>
+<span class="w">  </span><span class="k">SetOutPath</span><span class="w"> </span><span class="vg">$INSTDIR</span><span class="p">\</span>x64
+
+<span class="w">  </span><span class="k">File</span><span class="w"> </span><span class="s2">&quot;${CmdThumbGen_X64}\CmdThumbGen.dll&quot;</span>
+<span class="w">  </span><span class="k">File</span><span class="w"> </span><span class="s2">&quot;${CmdThumbGen_X64}\CmdThumbGen.pdb&quot;</span>
+
+<span class="w">  </span><span class="k">ExecWait</span><span class="w"> </span><span class="s1">&#39;REGSVR32 /s &quot;$OUTDIR\CmdThumbGen.dll&quot;&#39;</span><span class="w"> </span><span class="bp">$0</span>
+<span class="w">  </span><span class="k">DetailPrint</span><span class="w"> </span><span class="s2">&quot;結果: $0&quot;</span>
+<span class="k">SectionEnd</span>
+
+<span class="k">Section</span><span class="w"> </span><span class="na">/o</span><span class="w"> </span><span class="s2">&quot;CmdThumbGen(Arm64X) 導入&quot;</span><span class="w"> </span>SEC_CMDTHUMBGEN_ARM64X
+<span class="w">  </span><span class="c">; Set output path to the installation directory.</span>
+<span class="w">  </span><span class="k">SetOutPath</span><span class="w"> </span><span class="vg">$INSTDIR</span><span class="p">\</span>x64
+
+<span class="w">  </span><span class="k">File</span><span class="w"> </span><span class="s2">&quot;${CmdThumbGen_ARM64X}\CmdThumbGen.dll&quot;</span>
+<span class="w">  </span><span class="k">File</span><span class="w"> </span><span class="s2">&quot;${CmdThumbGen_ARM64X}\CmdThumbGen.pdb&quot;</span>
+
+<span class="w">  </span><span class="k">ExecWait</span><span class="w"> </span><span class="s1">&#39;REGSVR32 /s &quot;$OUTDIR\CmdThumbGen.dll&quot;&#39;</span><span class="w"> </span><span class="bp">$0</span>
+<span class="w">  </span><span class="k">DetailPrint</span><span class="w"> </span><span class="s2">&quot;結果: $0&quot;</span>
+<span class="k">SectionEnd</span>
+
+<span class="k">Function</span><span class="w"> </span>.onInit
+<span class="w">  </span><span class="kp">${If}</span><span class="w"> </span><span class="kp">${IsNativeAMD64}</span>
+<span class="w">    </span><span class="k">SectionSetFlags</span><span class="w"> </span><span class="kp">${SEC_CMDTHUMBGEN_X64}</span><span class="w"> </span><span class="kp">${SF_SELECTED}</span>
+<span class="w">  </span><span class="kp">${EndIf}</span>
+
+<span class="w">  </span><span class="kp">${If}</span><span class="w"> </span><span class="kp">${IsNativeARM64}</span>
+<span class="w">    </span><span class="k">SectionSetFlags</span><span class="w"> </span><span class="kp">${SEC_CMDTHUMBGEN_ARM64X}</span><span class="w"> </span><span class="kp">${SF_SELECTED}</span>
+<span class="w">  </span><span class="kp">${EndIf}</span>
+<span class="k">FunctionEnd</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="activexcontrol.html" class="btn btn-neutral float-left" title="ActiveX コントロールを配布したい" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../psqlodbc-x64.html" class="btn btn-neutral float-right" title="psqlodbc_x64.msi" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, kenjiuno.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

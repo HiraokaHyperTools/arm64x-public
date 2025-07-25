@@ -1,0 +1,197 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deprecated features への危機感 &mdash; Arm64X  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=a6a68382" />
+      <link rel="stylesheet" type="text/css" href="_static/fonts.css?v=5583d106" />
+
+  
+    <link rel="canonical" href="https://kkdf2.sakura.ne.jp/arm64x/sense-of-danger.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=c033477b"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=4755f45a"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="next" title="錯誤" href="error.html" />
+    <link rel="prev" title="Yahoo!ニュース のコメント覧 など" href="yahoo-news.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Arm64X
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="pinch.html">危機感: Copilot+ PC と Arm</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="copilotpluspc-and-arm.html">Copilot+ PC は Arm 固有ではない?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="copilotpluspc-spec.html">Copilot+ PC の要件とは</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yahoo-news.html">Yahoo!ニュース のコメント覧 など</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Deprecated features への危機感</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#microsoft-mixed-reality">Microsoft の Mixed Reality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#microsoft-hololens">Microsoft HoloLens</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#eol-end-of-life">EOL (End of life) の理屈</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Deprecated features 入りする傾向</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#arm">Arm...</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">関与</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="error.html">錯誤</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compat-core.html">互換性とは</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compat-past.html">過去に体験した互換性の問題</a></li>
+<li class="toctree-l2"><a class="reference internal" href="co/index.html">互換性の問題 詳しく</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developer-wants.html">OSS で助けを必要としています</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="process-interop-odbc-issue.html">EXE と DLL との関係 (プロセスの相互運用性)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="at-dev-dept.html">開発部の課題</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Arm64X</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="pinch.html">危機感: Copilot+ PC と Arm</a></li>
+      <li class="breadcrumb-item active">Deprecated features への危機感</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="deprecated-features">
+<h1>Deprecated features への危機感<a class="headerlink" href="#deprecated-features" title="Link to this heading"></a></h1>
+<p><a class="reference external" href="https://learn.microsoft.com/ja-jp/windows/whats-new/deprecated-features">Windows クライアントの非推奨の機能 | Microsoft Learn</a> というページがあります。</p>
+<p>ここには、恐らく、商業的な理由で継続が困難となった機能・技術が墓石のように列挙される、そういった場所であると考えています。</p>
+<section id="microsoft-mixed-reality">
+<h2>Microsoft の Mixed Reality<a class="headerlink" href="#microsoft-mixed-reality" title="Link to this heading"></a></h2>
+<p>このリストに <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">Mixed</span> <span class="pre">Reality</span></code> が墓標入りした時には驚いたものです。</p>
+<blockquote class="pull-quote">
+<div><p>Windows Mixed Reality</p>
+<p>Windows Mixed Realityは非推奨となり、バージョン 24H2 Windows 11で削除されます。 この非推奨には、Mixed Reality ポータル アプリ、SteamVR 用のWindows Mixed Reality、および Steam VR Beta が含まれます。 既存のWindows Mixed Realityデバイスは、ユーザーが現在リリースされているバージョンのWindows 11バージョン 23H2 のままである場合、2026 年 11 月まで Steam と連携し続けます。 2026 年 11 月以降、Windows Mixed Realityはセキュリティ更新プログラム、セキュリティ以外の更新プログラム、バグ修正プログラム、テクニカル サポート、またはオンライン技術コンテンツの更新プログラムを受け取らなくなります。</p>
+<p>2023 年 12 月</p>
+</div></blockquote>
+<p>私は <code class="docutils literal notranslate"><span class="pre">Acer</span> <span class="pre">AH101</span></code> という Windows Mixed Reality ヘッドセットを購入して、実際に使用していた事があります。
+そのため、多少の感情移入はあります。
+しかし、購入したはいいものの、ほとんど活用はしていませんでした。</p>
+</section>
+<section id="microsoft-hololens">
+<h2>Microsoft HoloLens<a class="headerlink" href="#microsoft-hololens" title="Link to this heading"></a></h2>
+<p>実は Microsoft HoloLens も EOL (End of life) で終了する雰囲気です。</p>
+<p><a class="reference external" href="https://japan.zdnet.com/article/35224470/">マイクロソフト、「HoloLens 2」の生産を終了へ--後継機の予定は不明 - ZDNET Japan</a></p>
+<blockquote class="pull-quote">
+<div><p>HoloLens 2は、2027年12月31日まで機能維持のためにセキュリティ更新などのサポートを受け続けることができる。</p>
+</div></blockquote>
+<p>先達てアレックス・キップマンが Microsoft を退職していますし (実はクビらしい)</p>
+<p>そのため、主だった Mixed Reality 事業はこれで幕引きになるのではないでしょうか。</p>
+<section id="eol-end-of-life">
+<h3>EOL (End of life) の理屈<a class="headerlink" href="#eol-end-of-life" title="Link to this heading"></a></h3>
+<p>この EOL はどういう理屈かといいますと:</p>
+<ul class="simple">
+<li><p>製品には予め 5 年間などの EOL (寿命) が設定された上で販売される</p></li>
+<li><p>EOL までの期間は、セキュリティ更新やバグ修正が提供される</p></li>
+<li><p>EOL 以降はサポートが提供されなくなる</p></li>
+<li><p>そのため EOL が到達するまでに、次世代製品の投入をするなどしている</p></li>
+</ul>
+<p>Microsoft HoloLens ファミリーについては <code class="docutils literal notranslate"><span class="pre">次世代製品の投入</span></code> がなかったために EOL を待つのみになりました。</p>
+<p>理由はいくつか考えられます:</p>
+<ul class="simple">
+<li><p>商業的な理由: 事業としての採算が取れないため、会社が EOL の判断をした場合</p></li>
+<li><p>優秀なリーダーがいなくなった</p></li>
+<li><p>全体のパイ (消費者ニーズ) が縮小した</p></li>
+</ul>
+</section>
+</section>
+<section id="id1">
+<h2>Deprecated features 入りする傾向<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>話を Deprecated features へ戻しましょう…</p>
+<p>Deprecated features 入りする傾向の 1 つに「利用者数が少ないもの」があると思います。</p>
+<p>そして、一度でもここに名前が刻まれてしまうと、もう手のつけようがなくなります。</p>
+<section id="arm">
+<h3>Arm...<a class="headerlink" href="#arm" title="Link to this heading"></a></h3>
+<p>ここに Arm 版 Windows が入ることのないように願うばかりです。</p>
+<p>それを防ぐための方法はあるのでしょうか…</p>
+</section>
+<section id="id2">
+<h3>関与<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>私は Arm 版 Windows を延命したいと考えているので、多少なりとも貢献をしたいのです。</p>
+<p>Arm 版 Windows の普及にあたっては、技術的に解決が可能な障壁も多くあります。</p>
+<p>それらを個別具体的に 1 つずつ丁寧に問題の解析をして、解決に結びつけていく事に意味があると考えます。
+「問題解決」を続けていく限り、逆に助けてくれる人も増えていくに違いありません。</p>
+<p>その延命策の一環として、こういった情報発信をしている側面があります。</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="yahoo-news.html" class="btn btn-neutral float-left" title="Yahoo!ニュース のコメント覧 など" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="error.html" class="btn btn-neutral float-right" title="錯誤" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, kenjiuno.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

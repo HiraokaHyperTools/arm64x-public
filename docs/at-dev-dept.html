@@ -1,0 +1,500 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>開発部の課題 &mdash; Arm64X  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=a6a68382" />
+      <link rel="stylesheet" type="text/css" href="_static/fonts.css?v=5583d106" />
+
+  
+    <link rel="canonical" href="https://kkdf2.sakura.ne.jp/arm64x/at-dev-dept.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=c033477b"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=4755f45a"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="next" title="スタンドロンのアプリを配布したい" href="disttypes/standalone.html" />
+    <link rel="prev" title="EXE と DLL との関係 (プロセスの相互運用性)" href="process-interop-odbc-issue.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Arm64X
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="pinch.html">危機感: Copilot+ PC と Arm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="process-interop-odbc-issue.html">EXE と DLL との関係 (プロセスの相互運用性)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">開発部の課題</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#arm64-arm64x">Arm64 / Arm64X 対応方針の案について</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="disttypes/standalone.html">スタンドロンのアプリを配布したい</a></li>
+<li class="toctree-l3"><a class="reference internal" href="disttypes/imetsf.html">IME &amp; TSF を配布したい</a></li>
+<li class="toctree-l3"><a class="reference internal" href="disttypes/odbcdriver.html">ODBC ドライバーを配布したい</a></li>
+<li class="toctree-l3"><a class="reference internal" href="disttypes/activexcontrol.html">ActiveX コントロールを配布したい</a></li>
+<li class="toctree-l3"><a class="reference internal" href="disttypes/comcomponent.html">COM コンポーネントを配布したい</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#arm64x">Arm64X とは</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Arm64 と Arm64X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arm64-exe">Arm64 バイナリー (EXE) で充分な場合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arm64-dll">Arm64 バイナリー (DLL) で充分な場合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arm64x-dll">Arm64X バイナリー (DLL) が必要な場合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Arm64X の使い所</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arm64ec">Arm64EC の落とし穴</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Arm64 バイナリーではダメなのか (Arm64X が必要な理由)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Arm64X バイナリーの判別方法について</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#psqlodbc-arm64">psqlODBC を実際に Arm64 環境で使用してみる</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="psqlodbc-x64.html">psqlodbc_x64.msi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="psqlodbc-arm64.html">psqlodbc_arm64.msi (Arm64)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="psqlodbc-arm64x.html">psqlodbc_arm64.msi (Arm64X)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">Arm64X バイナリーのビルド方法について</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#oss">OSS のビルドシステム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">問題点の認識状況</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pseudo-arm64x-coff">pseudo-ARM64X COFF (仮) の提案と実装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#os">偏りのある対応 OS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">依存関係の洗い出し</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">レガシーコードと最新のコンパイラー</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#windows-11">Windows 11 との互換性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">ビルドシステムの改修とコストの問題</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">セットアップの構築案</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dist-exe.html">EXE を配布する場合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dist-dll.html">DLL を配布する場合</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Arm64X</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">開発部の課題</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>開発部の課題<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<section id="arm64-arm64x">
+<h2>Arm64 / Arm64X 対応方針の案について<a class="headerlink" href="#arm64-arm64x" title="Link to this heading"></a></h2>
+<p>配布しようとするソフトウェアのタイプによって案は異なって参ります</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="disttypes/standalone.html">スタンドロンのアプリを配布したい</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="disttypes/standalone.html#id2">アプリの構成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disttypes/standalone.html#id3">セットアップの構成</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="disttypes/imetsf.html">IME &amp; TSF を配布したい</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="disttypes/imetsf.html#dll">DLL の構成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disttypes/imetsf.html#id1">セットアップの構成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disttypes/imetsf.html#nsis">NSIS セットアップでの判定方法の例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="disttypes/odbcdriver.html">ODBC ドライバーを配布したい</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="disttypes/odbcdriver.html#dll">DLL の構成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disttypes/odbcdriver.html#id1">セットアップの構成</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="disttypes/activexcontrol.html">ActiveX コントロールを配布したい</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="disttypes/activexcontrol.html#dll">DLL の構成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disttypes/activexcontrol.html#id1">セットアップの構成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disttypes/activexcontrol.html#nsis">NSIS セットアップでの判定方法の例</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="disttypes/comcomponent.html">COM コンポーネントを配布したい</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="disttypes/comcomponent.html#dll">DLL の構成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disttypes/comcomponent.html#id1">セットアップの構成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disttypes/comcomponent.html#nsis">NSIS セットアップでの判定方法の例</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="arm64x">
+<h2>Arm64X とは<a class="headerlink" href="#arm64x" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Arm64X とは Arm64 バイナリー (EXE, DLL) の事です。</p></li>
+<li><p>Arm64 に加えて Arm64EC (Arm 版 Windows 11 専用の x64 用バイナリー) も併せて搭載したものを Arm64X と称します。</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>Arm64 と Arm64X<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>大体の場合は Arm64 バイナリー (EXE, DLL) を用意すれば充分ですが、どういった場合に Arm64X バイナリー (DLL) が必要になるのでしょうか。</p>
+</section>
+<section id="arm64-exe">
+<h2>Arm64 バイナリー (EXE) で充分な場合<a class="headerlink" href="#arm64-exe" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>実行アプリ (EXE) を提供する場合</p></li>
+</ul>
+</section>
+<section id="arm64-dll">
+<h2>Arm64 バイナリー (DLL) で充分な場合<a class="headerlink" href="#arm64-dll" title="Link to this heading"></a></h2>
+<ul>
+<li><p>Arm64 バイナリー (EXE) との接続を前提としている場合</p></li>
+<li><p>アプリ側にて、ネイティブ DLL (x86, x64, Arm64 など) のフォルダー分けが可能な場合</p>
+<blockquote>
+<div><ul>
+<li><p>.NET + NuGet のように ランタイム識別子 を利用することで、フォルダー分けを実現している場合。例:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">runtimes\win-x86\native</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">runtimes\win-x64\native</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">runtimes\win-arm64\native</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="arm64x-dll">
+<h2>Arm64X バイナリー (DLL) が必要な場合<a class="headerlink" href="#arm64x-dll" title="Link to this heading"></a></h2>
+<p>つぎの両方からの利用が想定される場合</p>
+<ul class="simple">
+<li><p>Arm64 アプリ (EXE)</p></li>
+<li><p>x64 アプリ (EXE)</p></li>
+</ul>
+<p>例</p>
+<ul class="simple">
+<li><p>プリンタードライバーを提供する場合</p></li>
+<li><p>IME &amp; TSF を提供する場合</p></li>
+<li><p>ODBC ドライバーを提供する場合</p></li>
+<li><p>ActiveX コントロールを提供する場合</p></li>
+<li><p>COM コンポーネントを提供する場合</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2>Arm64X の使い所<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>Arm64 対応の OS は 2 種類あります:</p>
+<ul class="simple">
+<li><p>Arm 版 Windows 10</p></li>
+<li><p>Arm 版 Windows 11</p></li>
+</ul>
+<p>Arm64X バイナリーは実質的に Arm64 バイナリーとして機能できます。</p>
+<p>Arm64X バイナリーの最適な配布先の分類は <code class="docutils literal notranslate"><span class="pre">Arm</span> <span class="pre">版</span> <span class="pre">Windows</span></code> という事になります。</p>
+<p>※ 昔の Surface RT の Arm 版 Windows 8 は対象外です…</p>
+</section>
+<section id="arm64ec">
+<h2>Arm64EC の落とし穴<a class="headerlink" href="#arm64ec" title="Link to this heading"></a></h2>
+<p>Arm64EC</p>
+<ul class="simple">
+<li><p>Arm64EC とは x64 バイナリー (exe, dll) の事です。</p></li>
+<li><p>但し Arm 版 Windows 11 でしか動作しません。</p></li>
+</ul>
+<p><a class="reference external" href="https://learn.microsoft.com/ja-jp/windows/arm/arm64ec">ARM 上の ARM64EC for Windows 11 アプリ | Microsoft Learn</a></p>
+<blockquote class="pull-quote">
+<div><p>Arm64EC は、Windows 11 の Arm デバイスで実行されているアプリ用の新しいアプリケーション バイナリ インターフェイス (ABI) です。 Windows 11 SDK を使用する必要がある Windows 11 機能であり、Arm 上の Windows 10 では使用できません。</p>
+</div></blockquote>
+<p>問題点は、つぎの通りです:</p>
+<ul>
+<li><p>Arm64EC のアプリを配布して Windows 10 で実行しようとした</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>→ c0000005 エラーにより起動しない</p></li>
+<li><p>→ Arm64EC バイナリを Windows 10 向けに配布してはいけない!</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Arm64EC のアプリを配布して x64 版 Windows 11 で実行しようとした</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>→ c0000005 エラーにより起動しない</p></li>
+<li><p>→ Arm64EC バイナリを x64 版 Windows 11 向けに配布してはいけない!</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="id4">
+<h2>Arm64 バイナリーではダメなのか (Arm64X が必要な理由)<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>例えば ODBC ドライバーで困る事例があります。</p>
+<p>psqlODBC が Arm64 対応の場合:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ODBC</span> <span class="pre">データソースの設定</span> <span class="pre">(Arm64)</span></code> と <code class="docutils literal notranslate"><span class="pre">psqlODBC</span> <span class="pre">(Arm64)</span></code> との組み合わせ → 問題なし</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Microsoft</span> <span class="pre">Access</span> <span class="pre">(Arm64EC</span> <span class="pre">(x64))</span></code> と <code class="docutils literal notranslate"><span class="pre">psqlODBC</span> <span class="pre">(Arm64)</span></code> との組み合わせ → psqlODBC はロードできない</p></li>
+</ul>
+<p>psqlODBC が Arm64X 対応の場合:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ODBC</span> <span class="pre">データソースの設定</span> <span class="pre">(Arm64)</span></code> と <code class="docutils literal notranslate"><span class="pre">psqlODBC</span> <span class="pre">(Arm64X)</span></code> との組み合わせ → 問題なし</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Microsoft</span> <span class="pre">Access</span> <span class="pre">(Arm64EC</span> <span class="pre">(x64))</span></code> と <code class="docutils literal notranslate"><span class="pre">psqlODBC</span> <span class="pre">(Arm64X)</span></code> との組み合わせ → 問題なし</p></li>
+</ul>
+</section>
+<section id="id5">
+<h2>Arm64X バイナリーの判別方法について<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>手元にあるバイナリーファイルが Arm64X 対応かどうか、容易に判別する方法が、実はありません。</p>
+<p>そこで、ファイルタイプの判別を可能にする Web アプリケーションを作成しました (Visual Studio 2022 や .NET や WebAssembly などを利用して開発)</p>
+<p>オンラインデモはこちら:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://psqlodbc-for-win10-arm64.github.io/IsArm64XWeb/">IsArm64XWeb</a></p></li>
+</ul>
+<p>GitHub レポジトリーはこちら:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/psqlodbc-for-win10-arm64/IsArm64XWeb">psqlodbc-for-win10-arm64/IsArm64XWeb</a></p></li>
+</ul>
+<p>コマンドラインアプリの方が合目的であれば、こちらです:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/psqlodbc-for-win10-arm64/Toolings/tree/master/IsArm64x">Toolings/IsArm64x at master · psqlodbc-for-win10-arm64/Toolings</a></p></li>
+</ul>
+</section>
+<section id="psqlodbc-arm64">
+<h2>psqlODBC を実際に Arm64 環境で使用してみる<a class="headerlink" href="#psqlodbc-arm64" title="Link to this heading"></a></h2>
+<p>有名な RDBMS として PostgreSQL があります。
+これに対応する ODBC ドライバーとしては psqlODBC というソフトウェアがあり、
+Windows 向けのバイナリーはつぎの配布先からダウンロード可能です。</p>
+<p><a class="reference external" href="https://www.postgresql.org/ftp/odbc/releases/">PostgreSQL: File Browser</a></p>
+<p>執筆時点での最新版 <code class="docutils literal notranslate"><span class="pre">REL-17_00_0006</span></code> では、つぎの 2 種類の MSI パッケージが存在します:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">psqlodbc_x64.msi</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">psqlodbc_x86.msi</span></code></p></li>
+</ul>
+<p>一方で Arm64 対応の MSI パッケージは公式には存在していません。</p>
+<p>そこで、研究がてら非公式にビルドをしたものを GitHub で配布しています:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/psqlodbc-for-win10-arm64/psqlodbc/releases">Releases · psqlodbc-for-win10-arm64/psqlodbc</a></p></li>
+</ul>
+<p>各々のパッケージを使用した場合の成功事例と失敗事例を確認しましょう:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="psqlodbc-x64.html">psqlodbc_x64.msi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="psqlodbc-arm64.html">psqlodbc_arm64.msi (Arm64)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="psqlodbc-arm64x.html">psqlodbc_arm64.msi (Arm64X)</a></li>
+</ul>
+</div>
+<p>※ マシンは Azure の Arm64 対応の仮想マシンで検証しています。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Processor    Cobalt 100   3.40 GHz
+...
+System type  64-bit operating system, ARM-based processor
+</pre></div>
+</div>
+<img alt="_images/a64-sys-about.png" src="_images/a64-sys-about.png" />
+</section>
+<section id="id6">
+<h2>Arm64X バイナリーのビルド方法について<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<p>最新版の Visual Studio 2022 で Arm64X のバイナリーをビルドする方法が既に存在します。</p>
+<p><a class="reference external" href="https://learn.microsoft.com/ja-jp/windows/arm/arm64x-build">Arm64X ファイルをビルドする | Microsoft Learn</a></p>
+<p>Visual Studio 2022 の統合開発環境にて、プロジェクトの設定変更をする方法はリンク先の通りです。</p>
+<p>一方で、より原始的な方法でビルドする場合はどのようになるのでしょうか。</p>
+<p>具体的に見ていきましょう。</p>
+<p><code class="docutils literal notranslate"><span class="pre">dllmain.obj</span></code> から <code class="docutils literal notranslate"><span class="pre">plugin.dll</span></code> を生成する用事があるとすると、つぎのような流れになります:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dllmain.obj</span></code> (Arm64 版) をビルド</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dllmain.obj</span></code> (Arm64EC 版) をビルド</p></li>
+<li><p>リンク時に、両者を合体して <code class="docutils literal notranslate"><span class="pre">plugin.dll</span></code> を生成</p></li>
+</ul>
+<p>いかがでしょうか。</p>
+<p>特に、依存関係にあるライブラリーが Visual Studio 2022 の外で開発されたものである場合は、
+いかに大変な作業になるか…
+想像できるのではないでしょうか。</p>
+<p>例えば psqlODBC では <code class="docutils literal notranslate"><span class="pre">PostgreSQL</span></code> と <code class="docutils literal notranslate"><span class="pre">OpenSSL</span></code> への依存関係があります。</p>
+<p>執筆時点では、いずれのソフトウェアについても、公式の Arm64X バイナリーは存在していません。</p>
+<p>psqlODBC Arm64X 版の移植にあたっては、これらのビルドシステムを手修正し、自分でバイナリーをビルドする必要がありました。</p>
+</section>
+<section id="oss">
+<h2>OSS のビルドシステム<a class="headerlink" href="#oss" title="Link to this heading"></a></h2>
+<p>Visual Studio 2022 で完結するようなプロジェクトであれば、
+ビルドオプションの調整で話が済むのでしょう。</p>
+<p>一方で PostgreSQL (Meson) や OpenSSL など OSS のビルドシステムを採用しているプロジェクトでは、
+そうは参りません。</p>
+<p>PostgreSQL や OpenSSL など、Microsoft の OS と文化を発祥としない OSS については、
+どのようにすれば包括的な対応ができるのでしょうか。</p>
+<p>一般的な OSS のビルドシステムでは、例のような <code class="docutils literal notranslate"><span class="pre">dllmain.obj</span></code> は、単一でなければならない、という前提があるはずです。</p>
+<p><code class="docutils literal notranslate"><span class="pre">dllmain.obj</span></code> が 2 つ以上発生するようなプラットフォームに対して、
+容易に対応できるような設計になっていない。</p>
+<p>これが Arm64X 対応を語るうえでの、主な問題の 1 つです。</p>
+</section>
+<section id="id7">
+<h2>問題点の認識状況<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<p>この問題とその対応策について Microsoft の Developer Community へ提起はしたのですが、未だに Microsoft 側の具体的なアクションは見られません:</p>
+<p><a class="reference external" href="https://developercommunity.visualstudio.com/t/Want-to-create-only-single-ARM64X-COFF-a/10825476">Want to create only single ARM64X COFF and binaries with CL.exe / LIB.exe / LINK.exe commands - Developer Community</a></p>
+<p>私が提案した事項はつぎの通りです:</p>
+<blockquote class="pull-quote">
+<div><p>The problem is that the existing OSS build systems (like meson and OpenSSL build engine) do not expect to invoke the compiler 2 times.</p>
+<p>Is it able to achieve the following ideas?</p>
+<ul class="simple">
+<li><p>Build both ARM64 COFF and ARM64EC COFF with one CL.exe usage with a special command line option like <code class="docutils literal notranslate"><span class="pre">/arm64x</span></code>.</p></li>
+<li><p>Develop a new container purpose COFF format and magic, to include ARM64 and ARM64EC COFF images in one obj file.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="pseudo-arm64x-coff">
+<h2>pseudo-ARM64X COFF (仮) の提案と実装<a class="headerlink" href="#pseudo-arm64x-coff" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">.obj</span></code> ファイルが 2 つ発生してしまう。</p>
+<p>これを回避するために、両方 (Arm64 &amp; Arm64EC) の <code class="docutils literal notranslate"><span class="pre">.obj</span></code> を格納できる、コンテナ目的の <code class="docutils literal notranslate"><span class="pre">.obj</span></code> 形式 (pseudo-ARM64X COFF) を定義してしまう、という考え方です。</p>
+<p>Meson などのビルドシステムではクロスコンパイルをサポートしています。</p>
+<p>Arm64X という架空のターゲットを定義して、そのクロスコンパイル環境を実装し、問題解決しようとするアイデアです。</p>
+<p>COFF (pseudo-ARM64X COFF)</p>
+<ul class="simple">
+<li><p>マジック値が <code class="docutils literal notranslate"><span class="pre">0x014C</span></code> であり <code class="docutils literal notranslate"><span class="pre">AA64.obj</span></code> と <code class="docutils literal notranslate"><span class="pre">A641.obj</span></code> との 2 セクションのみを持つ <code class="docutils literal notranslate"><span class="pre">.obj</span></code> ファイル</p></li>
+</ul>
+<p>CL (<code class="docutils literal notranslate"><span class="pre">Arm64XDualObjCL</span></code>)</p>
+<ul class="simple">
+<li><p>これは Visual Studio の CL.exe を使用し、かつ pseudo-ARM64X COFF を入出力できるようにラップしたもの</p></li>
+</ul>
+<p>LIB (<code class="docutils literal notranslate"><span class="pre">Arm64XDualObjLIB</span></code>)</p>
+<ul class="simple">
+<li><p>これは Visual Studio の LIB.exe を使用し、かつ pseudo-ARM64X COFF を入力し、かつ Arm64X .lib (Arm64 COFF + Arm64EC COFF の両方を含む単一の <code class="docutils literal notranslate"><span class="pre">.lib</span></code>) を出力できるようにラップしたもの</p></li>
+</ul>
+<p>LINK (<code class="docutils literal notranslate"><span class="pre">Arm64XDualObjLINK</span></code>)</p>
+<ul class="simple">
+<li><p>これは Visual Studio の LINK.exe を使用し、かつ pseudo-ARM64X COFF と Arm64X .lib を入力し、かつ Arm64X バイナリーを生成できるようにラップしたもの</p></li>
+</ul>
+<p>.NET 8.0 を使用した見本実装を用意しています: <a class="reference external" href="https://github.com/psqlodbc-for-win10-arm64/Toolings">psqlodbc-for-win10-arm64/Toolings</a></p>
+</section>
+<section id="os">
+<h2>偏りのある対応 OS<a class="headerlink" href="#os" title="Link to this heading"></a></h2>
+<p>Arm64X DLL が実行されうる実行環境は 3 つあります:</p>
+<ul class="simple">
+<li><p>Arm 版 Windows 10 上の Arm64 アプリからのロード</p></li>
+<li><p>Arm 版 Windows 11 上の Arm64 アプリからのロード</p></li>
+<li><p>Arm 版 Windows 11 上の x64 アプリからのロード</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">Arm</span> <span class="pre">版</span> <span class="pre">Windows</span> <span class="pre">10</span></code> がプレインストールされた PC を合法的に入手する方法は、あるのでしょうか。
+無いかもしれません。
+つまるところ <code class="docutils literal notranslate"><span class="pre">Arm</span> <span class="pre">版</span> <span class="pre">Windows</span> <span class="pre">10</span></code> は検証機器が入手できないがために、サポート対象外にする必要があるかもしれません。</p>
+<p><code class="docutils literal notranslate"><span class="pre">Arm</span> <span class="pre">版</span> <span class="pre">Windows</span> <span class="pre">11</span></code> には 2 つの実行環境があります。</p>
+<p>DLL を提供する場合は、検証に際して、どのようなアプリをベースに動作確認をするのか、検討しましょう。</p>
+<ul class="simple">
+<li><p>Microsoft Office の場合は x64 または Arm64EC 版しか存在しません。
+Arm64 版のワードプロセッサーや表計算ソフトを用意する必要性についても検討しましょう。</p></li>
+</ul>
+</section>
+<section id="id8">
+<h2>依存関係の洗い出し<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<p>Arm64X 対応にあたり、依存関係にあるライブラリの把握をしましょう。
+一部は OSS であったり、
+一部は商用ソフトウェアであったりすると思います。</p>
+<img alt="_images/dep1.png" src="_images/dep1.png" />
+</section>
+<section id="id9">
+<h2>レガシーコードと最新のコンパイラー<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
+<p>レガシーコードと最新のコンパイラーは相性がよくない場合があります。</p>
+<p>特に、古いコードベースについては、最新のコンパイラでビルドをすると、エラーを吐き出す場合があります。
+この場合、コードの修正と場合によってはリファクタリングが必要になります。</p>
+<p>コードを修正するという事は 「修正後のコードにバグが無いという事を確実にするために、追加の検証作業が必要になる」 という点にも留意しましょう。</p>
+<img alt="_images/dep2.png" src="_images/dep2.png" />
+<p>Arm64X バイナリーをビルドするためには <code class="docutils literal notranslate"><span class="pre">Visual</span> <span class="pre">Studio</span> <span class="pre">2022</span> <span class="pre">バージョン</span> <span class="pre">17.3</span></code> 以降 (2025/01/22 頃、公開) が必要です。</p>
+</section>
+<section id="windows-11">
+<h2>Windows 11 との互換性<a class="headerlink" href="#windows-11" title="Link to this heading"></a></h2>
+<p>Arm64EC は Windows 11 専用バイナリーという点から <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">11</span> <span class="pre">で動作するコード</span></code> が必要です。</p>
+<p>場合によっては、コードのブラッシュアップも必要になるでしょう。</p>
+<p>公式ドキュメントを参照するなどして、互換性が確保されている事を確認しましょう:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://learn.microsoft.com/ja-jp/windows/apps/get-started/make-apps-great-for-windows">Windows 11 でアプリをすぐれたものにするためにできることトップ 11 - Windows apps | Microsoft Learn</a></p></li>
+</ul>
+</section>
+<section id="id10">
+<h2>ビルドシステムの改修とコストの問題<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
+<p>x86 &amp; x64 のビルドシステムへ Arm64X を追加する場合に、相当なコスト (人件費) が発生する可能性があります。</p>
+<p>主には、実際の移植作業と、ビルドされた全バイナリーの検証作業です。</p>
+<p>psqlODBC のように対象のプロジェクトが 1 つであれば充分な手間暇を掛けられますが…</p>
+<p>それがプリンターメーカーのドライバーのように 100 種類近くもあると、どうでしょうか。
+あるいは、退職者が開発したプログラムに依存していて手入れが必要になるなど、
+予期しない時間コストの追加も考慮しなければなりません。</p>
+<p>サポート期間内の全てのプリンターの電源を入れて、
+順番に少なくとも 3 パターン (x86, x64, Arm64X) ずつ、
+基本機能のテストをしていき、
+なおかつ問題点の修正をしては カンペキな状態へと仕上げていく。
+現実的に可能なのでしょうか…</p>
+<img alt="_images/dep3.png" src="_images/dep3.png" />
+<p><a class="reference download internal" download="" href="_downloads/090f8742c0cf29a155434609f59db36b/deps.pptx"><code class="xref download docutils literal notranslate"><span class="pre">imgs/deps.pptx</span></code></a></p>
+</section>
+<section id="id11">
+<h2>セットアップの構築案<a class="headerlink" href="#id11" title="Link to this heading"></a></h2>
+<p>普段より私は NSIS (Nullsoft Scriptable Install System) を使用しています。
+スクリプトベースで検討すると、いくつかの方法論が浮かび上がってきます。</p>
+<p>また EXE を配布する場合と DLL を配布する場合とで、考え方が異なります。</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dist-exe.html">EXE を配布する場合</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dist-exe.html#x86-x64-arm64-arm64ec">理想 (x86 + x64 + Arm64 + Arm64EC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dist-exe.html#x64">x64 のみ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dist-exe.html#x86-x64-arm64">x86 + x64 + Arm64</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dist-dll.html">DLL を配布する場合</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dist-dll.html#x86-x64">x86 + x64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dist-dll.html#x86-x64-arm64">x86 + x64 + Arm64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dist-dll.html#x86-x64-arm64x">x86 + x64 + Arm64X</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="process-interop-odbc-issue.html" class="btn btn-neutral float-left" title="EXE と DLL との関係 (プロセスの相互運用性)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="disttypes/standalone.html" class="btn btn-neutral float-right" title="スタンドロンのアプリを配布したい" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, kenjiuno.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
