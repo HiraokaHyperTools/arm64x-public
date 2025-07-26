@@ -171,6 +171,15 @@ Windows 向けのバイナリーはつぎの配布先からダウンロード可
 
 .. image:: imgs/a64-sys-about.png
 
+mariadb-connector-odbc Arm64X 対応版
+-------------------------------------------------
+
+2025/07/26 現在、公式には Arm64 版の mariadb-connector-odbc は存在していないようです。
+
+私がビルドしたものをこちらのサイトで配布しています (利用は評価目的での範囲内を推奨)
+
+- `mariadb-connector-odbc-for-win10-arm64 <https://github.com/mariadb-connector-odbc-for-win10-arm64>`_
+
 Arm64X バイナリーのビルド方法について
 -------------------------------------------------
 

@@ -35,6 +35,7 @@ Arm 版 Windows 11 では…
    7-zip
    nsis
    microsoft-teams
+   esd-ema1000gbk
 
 事情あり
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
