@@ -70,7 +70,7 @@ Windows 9x から Windows NT への移行 について
    - ファイルシステムがモジュール式になりました (Windows IFS): FAT, HPFS, NTFS, CDFS (ISO 9660), UDFS (UDF), Dokan, exFAT, ReFS など Microsoft 内外で多数のモジュールが開発されました
    - サブシステムが導入されました。 1 つの OS で複数のプラットフォームに対応できるようになりました。例: WOW, WoW64, WOW64, WSL
    - Windows サービスが導入されました
-   - 近代的な 32 ビット OS の仲間入りをしたことで Linux など他の OS 向けに開発された多数のアプリが Windows へ移植されました
+   - 近代的な 32 ビット OS の仲間入りを果たしたことで Linux など他の OS 向けに開発された多数のアプリが Windows へ移植されました
 
 - NTFS の利用により 4GB を超えるファイルの取り扱いができるようになりました。
 

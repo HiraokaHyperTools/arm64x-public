@@ -55,10 +55,66 @@ Microsoft HoloLens ファミリーについては ``次世代製品の投入`` �
 - 優秀なリーダーがいなくなった
 - 全体のパイ (消費者ニーズ) が縮小した
 
-Deprecated features 入りする傾向
+Windows RT
 -------------------------------------------------
 
-話を Deprecated features へ戻しましょう…
+初代 Surface は Windows RT という Windows 8 の Arm 版を搭載していました。
+
+- `「Windows RT」の行方--「Windows 10」との関係は？ - ZDNET Japan <https://japan.zdnet.com/article/35059344/>`_
+
+.. pull-quote::
+
+   「Windows RT」は、携帯電話で多く用いられているARMチップを搭載したデバイス上で稼働するMicrosoftのOSであり、大きくデザインが変わった「Windows 8」とともに2012年後半に市場に投入された。Windows RTは登場後、苦戦を強いられ、ユーザーを引きつけることができなかった。その理由には、「Outlook」のような従来のWindowsプログラムが同OS上で動作しなかったせいもある。またMicrosoftは、より優れた製品を作り上げるためにWindows RTデバイスの開発プロセスを厳しく統制し、協業するチップメーカーの数を絞り込んだ。しかしそれによって、Windows RTを搭載した製品は同社の「Surface」以外にほとんど登場しないという結果になった。
+
+私は手を出しませんでしたが、この頃は Windows XP / Windows 7 が全盛の時期でした。
+
+次世代 OS である Windows 8 への移行については色々な懸念が噴出していた時期でもあります。
+
+Windows 95 から続いてきた伝統的な「スタートメニューが消滅する」というビッグニュースがあり、この 1 件だけでも様々なユーザー層が大混乱を引き起こしたものです。
+
+そんな懸念の嵐の中でひっそりと流されるように消滅していったのが Windows RT でした。
+
+こちらは 2023/01/10 に EOL を迎えました。
+
+- `Windows RT - Microsoft Lifecycle | Microsoft Learn <https://learn.microsoft.com/ja-jp/lifecycle/products/windows-rt>`_
+
+
+.. list-table::
+
+   * - リスト
+     - 開始日
+     - メインストリームの終了日
+     - 延長された終了日
+   * - Windows RT
+     - 2012年10月30日
+     - 2018年1月9日
+     - 2023年1月10日
+
+Microsoft Windows 10 Mobile
+-------------------------------------------------
+
+Microsoft のモバイル機器の事業については、
+iPhone の登場までに限りますが、
+色々なタイプのデバイスやソフトウェアが近未来を描きたいかの如く大量に発表され、
+また一定の評価を得ていたように思います。 
+
+ご存知のように iPhone / iPad の登場により、近未来感の模索という長い旅路はここで終結してしまいました。
+
+そう、モバイルデバイスはそのビジネスモデルとともに商業化に成功し、生活必需品 (贅沢品) としての地位を確立したからです。
+
+この分野では首位を維持し続けるために、
+強力なリーダーシップと、業界を牽引するための実力や実績が必要になります。
+Microsoft はそういったビジョンを実現できるような人材を欠いていたのかもしれません。
+
+- `Windows 10 Mobile のサポート終了 - Microsoft Lifecycle | Microsoft Learn <https://learn.microsoft.com/ja-jp/lifecycle/announcements/windows-10-mobile-end-of-support>`_
+
+.. pull-quote::
+
+   Windows 10 Mobile Version 1709 (2017 年 10 月リリース) は Windows 10 Mobile の最終リリースであり、Microsoft によるサポートは 2019 年 12 月 10 日で終了します。 このサポート終了日は、Windows 10 Mobile および Windows 10 Mobile Enterprise を含む、すべての Windows 10 Mobile 製品に適用されます。
+
+
+Deprecated features 入りする傾向
+-------------------------------------------------
 
 Deprecated features 入りする傾向の 1 つに「利用者数が少ないもの」があると思います。
 

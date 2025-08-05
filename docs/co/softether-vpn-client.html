@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SoftEther VPN Client &mdash; Arm64X  ドキュメント</title>
+  <title>SoftEther VPN Client Ver 4.44, Build 9807, rtm &mdash; Arm64X  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=a6a68382" />
@@ -23,8 +23,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="キヤノン iR-ADV C3835" href="ir-adv-c3835.html" />
-    <link rel="prev" title="ブラザー DCP-J982N" href="dcp-j982n.html" /> 
+    <link rel="next" title="BUFFALO WI-U2-433DHP/N" href="wi-u2-433dhp.html" />
+    <link rel="prev" title="キヤノン iR-ADV C3835" href="ir-adv-c3835.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -89,7 +89,7 @@
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../pinch.html">危機感: Copilot+ PC と Arm</a></li>
           <li class="breadcrumb-item"><a href="index.html">互換性の問題 詳しく</a></li>
-      <li class="breadcrumb-item active">SoftEther VPN Client</li>
+      <li class="breadcrumb-item active">SoftEther VPN Client Ver 4.44, Build 9807, rtm</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -98,11 +98,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="softether-vpn-client">
-<h1>SoftEther VPN Client<a class="headerlink" href="#softether-vpn-client" title="Link to this heading"></a></h1>
+  <section id="softether-vpn-client-ver-4-44-build-9807-rtm">
+<h1>SoftEther VPN Client Ver 4.44, Build 9807, rtm<a class="headerlink" href="#softether-vpn-client-ver-4-44-build-9807-rtm" title="Link to this heading"></a></h1>
 <p>セットアップは問題なく完了しました。</p>
 <p>しかし、仮想 VPN アダプターのインストールができず、接続ができませんでした。</p>
-<p><a class="reference external" href="https://www.softether-download.com/ja.aspx?product=softether">SoftEther ダウンロード センター</a></p>
+<p><a class="reference external" href="https://www.softether-download.com/ja.aspx?product=softether">SoftEther ダウンロード センター</a> では CPU の選択で <code class="docutils literal notranslate"><span class="pre">Intel</span> <span class="pre">(x86</span> <span class="pre">and</span> <span class="pre">x64)</span></code> しかないため、
+Arm CPU は未対応の判断です。</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>SoftEther VPN Client
 </pre></div>
 </div>
@@ -126,15 +127,29 @@ OS: Windows, CPU: Intel (x86 and x64)
 <li><p>SSTP</p></li>
 </ul>
 <p>※ 事前設定が必要です。</p>
-<p>その場合でも SoftEther VPN Client は使用しませんので、セットアップは不要です。</p>
+<p>L2TP/IPsec 参考:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ja.softether.org/4-docs/2-howto/L2TP_IPsec_Setup_Guide">SoftEther VPN Server での L2TP/IPsec 設定ガイド - SoftEther VPN プロジェクト</a></p></li>
+</ul>
+<p>OpenVPN 参考:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ja.softether.org/1-features/1._%E6%A5%B5%E3%82%81%E3%81%A6%E5%BC%B7%E5%8A%9B%E3%81%AA_VPN_%E6%8E%A5%E7%B6%9A%E6%80%A7#OpenVPN_.E3.83.97.E3.83.AD.E3.83.88.E3.82.B3.E3.83.AB.E3.81.AE.E3.82.B5.E3.83.9D.E3.83.BC.E3.83.88:~:text=%E8%A8%AD%E5%AE%9A%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%99%E3%80%82-,OpenVPN%20%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB%E3%81%AE%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88,-SoftEther%20VPN%20Server">1. 極めて強力な VPN 接続性 - SoftEther VPN プロジェクト</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OpenVPN</span> <span class="pre">プロトコルのサポート</span></code> セクションを確認してください</p></li>
+</ul>
+<p>SSTP 参考:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ja.softether.org/1-features/1._%E6%A5%B5%E3%82%81%E3%81%A6%E5%BC%B7%E5%8A%9B%E3%81%AA_VPN_%E6%8E%A5%E7%B6%9A%E6%80%A7#:~:text=%E5%88%A9%E7%94%A8%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%99%E3%80%82-,Microsoft%20SSTP%20VPN%20%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB%E3%81%AE%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88,-SoftEther%20VPN%20Server">1. 極めて強力な VPN 接続性 - SoftEther VPN プロジェクト</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Microsoft</span> <span class="pre">SSTP</span> <span class="pre">VPN</span> <span class="pre">プロトコルのサポート</span></code> セクションを確認してください</p></li>
+</ul>
+<p>これらの場合でも SoftEther VPN Client は使用しませんので、セットアップは不要です。</p>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="dcp-j982n.html" class="btn btn-neutral float-left" title="ブラザー DCP-J982N" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="ir-adv-c3835.html" class="btn btn-neutral float-right" title="キヤノン iR-ADV C3835" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ir-adv-c3835.html" class="btn btn-neutral float-left" title="キヤノン iR-ADV C3835" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="wi-u2-433dhp.html" class="btn btn-neutral float-right" title="BUFFALO WI-U2-433DHP/N" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

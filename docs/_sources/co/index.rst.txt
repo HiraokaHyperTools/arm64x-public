@@ -7,6 +7,7 @@
 Arm 版 Windows 11 では… 
 
 - プリンターによっては印刷先として利用できないものがある
+- USB デバイスによっては動作しないものがある
 - 日本語入力ソフトウェアの中には動作しないものがある
 - VPN クライアントには動作しないものがある
 - ODBC ドライバーには動作しないものがある
@@ -19,7 +20,7 @@ Arm 版 Windows 11 では…
 2025/07/23 手元に ``ASUS Vivobook 16 X1607QA`` が届きました。
 
 待ちに待った検証の機会です。
-普段利用するアプリの検証をしていきました。
+普段利用するアプリおよびデバイスの検証をしていきました。
 
 問題なし
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -36,6 +37,16 @@ Arm 版 Windows 11 では…
    nsis
    microsoft-teams
    esd-ema1000gbk
+   crystal-disk-info
+   anker-a7613
+   buffalo-lua4-u3-agte-nbk
+   anker-a8313
+   raycue-4-in-1
+   dsd-tech-sh-u09c
+   ugreen-pl2303
+   kuro-dachi-clone-erase-eskp
+   dsd-tech-sh-u09g
+   chilison-hdmi-capture-usb-z37
 
 事情あり
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -44,6 +55,7 @@ Arm 版 Windows 11 では…
    :maxdepth: 1
 
    dcp-j982n
+   ir-adv-c3835
 
 利用できず
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -52,6 +64,10 @@ Arm 版 Windows 11 では…
    :maxdepth: 1
 
    softether-vpn-client
+   wi-u2-433dhp
+   startech-com-1p3fp-usb-serial
+   akfsd-07
+   fp-rd2
 
 未確認または確認中
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -59,4 +75,4 @@ Arm 版 Windows 11 では…
 .. toctree::
    :maxdepth: 1
 
-   ir-adv-c3835
+- (なし)
