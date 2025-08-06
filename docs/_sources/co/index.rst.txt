@@ -47,7 +47,7 @@ Arm 版 Windows 11 では…
    kuro-dachi-clone-erase-eskp
    dsd-tech-sh-u09g
    chilison-hdmi-capture-usb-z37
-   play-blu-ray-media
+   play-blu-ray-disc/index
 
 事情あり
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
