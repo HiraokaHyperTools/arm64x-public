@@ -7,7 +7,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'Arm64X'
-copyright = '2025, kenjiuno'
+copyright = '2025, 2026, kenjiuno'
 author = 'kenjiuno'
 
 # -- General configuration ---------------------------------------------------
