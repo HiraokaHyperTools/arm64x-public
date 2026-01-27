@@ -24,7 +24,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
     <link rel="next" title="BUFFALO WI-U2-433DHP/N" href="wi-u2-433dhp.html" />
-    <link rel="prev" title="キヤノン iR-ADV C3835" href="ir-adv-c3835.html" /> 
+    <link rel="prev" title="ARM64 プロセスから LocalDB を操作" href="localdb/use-sqluserinstance-dll.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -61,7 +61,8 @@
 <li class="toctree-l4"><a class="reference internal" href="index.html#id4">問題なし</a></li>
 <li class="toctree-l4"><a class="reference internal" href="index.html#id5">事情あり</a></li>
 <li class="toctree-l4 current"><a class="reference internal" href="index.html#id6">利用できず</a></li>
-<li class="toctree-l4"><a class="reference internal" href="index.html#id7">未確認または確認中</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index.html#id7">別表</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index.html#id8">未確認または確認中</a></li>
 </ul>
 </li>
 </ul>
@@ -100,8 +101,13 @@
              
   <section id="softether-vpn-client-ver-4-44-build-9807-rtm">
 <h1>SoftEther VPN Client Ver 4.44, Build 9807, rtm<a class="headerlink" href="#softether-vpn-client-ver-4-44-build-9807-rtm" title="Link to this heading"></a></h1>
-<p>セットアップは問題なく完了しました。</p>
+<section id="id1">
+<h2>概要<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>セットアップは問題なく完了します。</p>
 <p>しかし、仮想 VPN アダプターのインストールができず、接続ができませんでした。</p>
+</section>
+<section id="id2">
+<h2>ダウンロードについて<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <p><a class="reference external" href="https://www.softether-download.com/ja.aspx?product=softether">SoftEther ダウンロード センター</a> では CPU の選択で <code class="docutils literal notranslate"><span class="pre">Intel</span> <span class="pre">(x86</span> <span class="pre">and</span> <span class="pre">x64)</span></code> しかないため、
 Arm CPU は未対応の判断です。</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>SoftEther VPN Client
@@ -120,7 +126,19 @@ OS: Windows, CPU: Intel (x86 and x64)
 (Windows 98 / 98 SE / ME / NT 4.0 SP6a / 2000 SP4 / XP SP2, SP3 / Vista SP1, SP2 / 7 SP1 / 8 / 8.1 / 10 / 11 / Server 2003 SP2 / Server 2008 SP1, SP2 / Hyper-V Server 2008 / Server 2008 R2 SP1 / Hyper-V Server 2008 R2 / Server 2012 / Hyper-V Server 2012 / Server 2012 R2 / Hyper-V Server 2012 R2 / Server 2016 / Server 2019 / Server 2022)
 </pre></div>
 </div>
-<p>但し、SoftEther VPN Client 以外のプロトコルを利用することで SoftEther VPN Server との接続ができる方法もあります:</p>
+</section>
+<section id="id3">
+<h2>公式フォーラムでの反応について<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>既報のようです。 解決策は提示されていませんが、 <code class="docutils literal notranslate"><span class="pre">L2TP/IPsec</span></code> のような代替プロトコルの利用が提案されています</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://forum.softether.org/viewtopic.php?t=65304">Softether on Windows 10 with ARM64 processor - SoftEther VPN User Forum</a></p></li>
+<li><p><a class="reference external" href="https://forum.vpngate.net/viewtopic.php?t=68663">SoftEther VPN for Windows 11 ARM64 - SoftEther VPN User Forum</a></p></li>
+</ul>
+</section>
+<section id="id4">
+<h2>回避策<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>SoftEther VPN Server は 「複数の標準的な VPN プロトコルをサポート」 しています。
+他の VPN クライアント技術を利用して SoftEther VPN Server へ接続する方法があります:</p>
 <ul class="simple">
 <li><p>L2TP/IPsec</p></li>
 <li><p>OpenVPN</p></li>
@@ -143,12 +161,13 @@ OS: Windows, CPU: Intel (x86 and x64)
 </ul>
 <p>これらの場合でも SoftEther VPN Client は使用しませんので、セットアップは不要です。</p>
 </section>
+</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="ir-adv-c3835.html" class="btn btn-neutral float-left" title="キヤノン iR-ADV C3835" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="localdb/use-sqluserinstance-dll.html" class="btn btn-neutral float-left" title="ARM64 プロセスから LocalDB を操作" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="wi-u2-433dhp.html" class="btn btn-neutral float-right" title="BUFFALO WI-U2-433DHP/N" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -1,0 +1,220 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARM64 プロセスから LocalDB を操作 &mdash; Arm64X  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=a6a68382" />
+      <link rel="stylesheet" type="text/css" href="../../_static/fonts.css?v=5583d106" />
+
+  
+    <link rel="canonical" href="https://kkdf2.sakura.ne.jp/arm64x/co/localdb/use-sqluserinstance-dll.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=c033477b"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=4755f45a"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
+    <link rel="next" title="SoftEther VPN Client Ver 4.44, Build 9807, rtm" href="../softether-vpn-client.html" />
+    <link rel="prev" title="SqlLocalDB.exe を使用して LocalDB を管理" href="use-sqllocaldb-exe.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Arm64X
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../pinch.html">危機感: Copilot+ PC と Arm</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../copilotpluspc-and-arm.html">Copilot+ PC は Arm 固有ではない?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../copilotpluspc-spec.html">Copilot+ PC の要件とは</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../yahoo-news.html">Yahoo!ニュース のコメント覧 など</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sense-of-danger.html">Deprecated features への危機感</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../error.html">錯誤</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../compat-core.html">互換性とは</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../compat-past.html">過去に体験した互換性の問題</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">互換性の問題 詳しく</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../index.html#id2">大雑把に</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html#id3">個別具体的に (検証結果)</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../index.html#id4">問題なし</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html#id5">事情あり</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#id6">利用できず</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#id7">別表</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#id8">未確認または確認中</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer-wants.html">OSS で助けを必要としています</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../process-interop-odbc-issue.html">EXE と DLL との関係 (プロセスの相互運用性)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../at-dev-dept.html">開発部の課題</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Arm64X</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../pinch.html">危機感: Copilot+ PC と Arm</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">互換性の問題 詳しく</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Microsoft SQL Server Express LocalDB</a></li>
+      <li class="breadcrumb-item active">ARM64 プロセスから LocalDB を操作</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="arm64-localdb">
+<h1>ARM64 プロセスから LocalDB を操作<a class="headerlink" href="#arm64-localdb" title="Link to this heading"></a></h1>
+<section id="id1">
+<h2>概要<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>ARM64 プロセスから <a class="reference external" href="https://learn.microsoft.com/ja-jp/sql/relational-databases/express-localdb-instance-apis/sql-server-express-localdb-reference-instance-apis?view=sql-server-ver17">SQL Server Express LocalDB インスタンス API</a> を使用して LocalDB を操作しようとする一切の操作が失敗します</p>
+<p>身近な所では .NET Framework または .NET に標準装備の System.Data.SqlClient による LocalDB 起動操作の失敗が挙げられます</p>
+<p>例えば SqlConnection Class を用いて <code class="docutils literal notranslate"><span class="pre">server=(localdb)\myInstance</span></code> へ接続しようとするときです</p>
+<p>このとき SqlConnection の内部では <code class="docutils literal notranslate"><span class="pre">LocalDBCreateInstance</span></code> API を使用して LocalDB を起動しようとします</p>
+<p>これは、プロセスに対して <code class="docutils literal notranslate"><span class="pre">SqlUserInstance.dll</span></code> を読み込もうとします</p>
+<p><code class="docutils literal notranslate"><span class="pre">SqlUserInstance.dll</span></code> インストール先の例:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>C:\Program Files\Microsoft SQL Server\110\LocalDB\Binn\SqlUserInstance.dll
+C:\Program Files\Microsoft SQL Server\120\LocalDB\Binn\SqlUserInstance.dll
+C:\Program Files\Microsoft SQL Server\130\LocalDB\Binn\SqlUserInstance.dll
+C:\Program Files\Microsoft SQL Server\150\LocalDB\Binn\SqlUserInstance.dll
+</pre></div>
+</div>
+<p>しかし <code class="docutils literal notranslate"><span class="pre">SqlUserInstance.dll</span></code> は x86 or x64 版しか提供されていないため、 ARM64 プロセスへの読み込みは失敗します</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Unhandled exception. Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 56 - Unable to load the SQLUserInstance.dll from the location specified in the registry. Verify that the Local Database Runtime feature of SQL Server Express is properly installed.)
+ ---&gt; System.ComponentModel.Win32Exception (193): %1 は有効な Win32 アプリケーションではありません。
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal&amp; connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal&amp; connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal&amp; connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open(SqlConnectionOverrides overrides)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternal(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerDatabaseCreator.&lt;&gt;c__DisplayClass18_0.&lt;Exists&gt;b__0(DateTime giveUp)
+   at Microsoft.EntityFrameworkCore.ExecutionStrategyExtensions.&lt;&gt;c__DisplayClass12_0`2.&lt;Execute&gt;b__0(DbContext _, TState s)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ExecutionStrategyExtensions.Execute[TState,TResult](IExecutionStrategy strategy, TState state, Func`2 operation, Func`2 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerDatabaseCreator.Exists(Boolean retryOnNotExists)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerDatabaseCreator.Exists()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabaseCreator.EnsureCreated()
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.EnsureCreated()
+   ...
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:193,State:0,Class:20
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h2>現状<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>既に多方面で議論されています。 2026-01-19 現在、公式からの解決策は未だ提示されていません:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://developercommunity.visualstudio.com/t/SQL-LocalDB-broken-on-ARM64/10107793">SQL LocalDB broken on ARM64 - Developer Community</a></p></li>
+<li><p><a class="reference external" href="https://developercommunity.visualstudio.com/t/Unable-to-load-the-SQLUserInstancedll/10188568">&quot;Unable to load the SQLUserInstance.dll&quot; when connecting to LocalDB on ARM64 (Win Dev Kit 2023) - Developer Community</a></p></li>
+<li><p><a class="reference external" href="https://learn.microsoft.com/en-us/answers/questions/1856766/sql-server-localdb-on-windows-on-arm">SQL Server LocalDB on Windows on ARM - Microsoft Q&amp;A</a></p></li>
+<li><p><a class="reference external" href="https://github.com/dotnet/SqlClient/issues/1441">Cannot connect to (localdb) from .NET Core except via Named Pipe on Windows 11 ARM · Issue #1441 · dotnet/SqlClient</a></p></li>
+</ul>
+</section>
+<section id="id3">
+<h2>公式回答<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://developercommunity.visualstudio.com/t/Unable-to-load-the-SQLUserInstancedll/10188568">“Unable to load the SQLUserInstance.dll” when connecting to LocalDB on ARM64 (Win Dev Kit 2023) - Developer Community</a> (Jul 03, 2024 5:24 AM) によると、問題の把握はしているが、修正の予定は無い、とのこと</p>
+<blockquote class="pull-quote">
+<div><p>Connectivity to SQLLocalDB on arm64 remains on our roadmap, but we do not have a release that I can commit to at this time. We understand that connecting to LocalDB dramatically simplifies the SQL projects development process. You may find installing SQL Server developer edition on the local arm64 Windows machine for developer purposes to be a suitable workaround.</p>
+</div></blockquote>
+</section>
+<section id="id5">
+<h2>回避策 (運用面)<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Microsoft SQL Server Express (または Developer など) のインスタンスをインストールします。 LocalDB の代わりに、そちらへ接続するようにします</p></li>
+<li><p>対象アプリを x64 プロセスとして実行します</p></li>
+</ul>
+</section>
+<section id="id6">
+<h2>回避策 (設計面)<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.NET</span> <span class="pre">Aspire</span></code> のようなオーケストレーションを採用して <a class="reference external" href="https://aspire.dev/integrations/databases/sql-server/">SQL Server integration</a> (Docker 技術利用) を活用する案もあります。 しかし、当の <a class="reference external" href="https://hub.docker.com/r/microsoft/mssql-server">mcr.microsoft.com/mssql/server</a> イメージについても amd64 版しか存在しないようです。 Docker を利用する場合についても x64 版を導入するなど、更なる労力を費やす必要があるようです</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="use-sqllocaldb-exe.html" class="btn btn-neutral float-left" title="SqlLocalDB.exe を使用して LocalDB を管理" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../softether-vpn-client.html" class="btn btn-neutral float-right" title="SoftEther VPN Client Ver 4.44, Build 9807, rtm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, kenjiuno.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

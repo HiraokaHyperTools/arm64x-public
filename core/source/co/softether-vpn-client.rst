@@ -1,9 +1,15 @@
 SoftEther VPN Client Ver 4.44, Build 9807, rtm
 ===========================================================
 
-セットアップは問題なく完了しました。
+概要
+----
+
+セットアップは問題なく完了します。
 
 しかし、仮想 VPN アダプターのインストールができず、接続ができませんでした。
+
+ダウンロードについて
+-------------------------------
 
 `SoftEther ダウンロード センター <https://www.softether-download.com/ja.aspx?product=softether>`_ では CPU の選択で ``Intel (x86 and x64)`` しかないため、
 Arm CPU は未対応の判断です。
@@ -27,7 +33,19 @@ Arm CPU は未対応の判断です。
    OS: Windows, CPU: Intel (x86 and x64)
    (Windows 98 / 98 SE / ME / NT 4.0 SP6a / 2000 SP4 / XP SP2, SP3 / Vista SP1, SP2 / 7 SP1 / 8 / 8.1 / 10 / 11 / Server 2003 SP2 / Server 2008 SP1, SP2 / Hyper-V Server 2008 / Server 2008 R2 SP1 / Hyper-V Server 2008 R2 / Server 2012 / Hyper-V Server 2012 / Server 2012 R2 / Hyper-V Server 2012 R2 / Server 2016 / Server 2019 / Server 2022)
 
-但し、SoftEther VPN Client 以外のプロトコルを利用することで SoftEther VPN Server との接続ができる方法もあります:
+公式フォーラムでの反応について
+------------------------------------
+
+既報のようです。 解決策は提示されていませんが、 ``L2TP/IPsec`` のような代替プロトコルの利用が提案されています
+
+* `Softether on Windows 10 with ARM64 processor - SoftEther VPN User Forum <https://forum.softether.org/viewtopic.php?t=65304>`_
+* `SoftEther VPN for Windows 11 ARM64 - SoftEther VPN User Forum <https://forum.vpngate.net/viewtopic.php?t=68663>`_
+
+回避策
+------
+
+SoftEther VPN Server は 「複数の標準的な VPN プロトコルをサポート」 しています。
+他の VPN クライアント技術を利用して SoftEther VPN Server へ接続する方法があります:
 
 - L2TP/IPsec
 - OpenVPN

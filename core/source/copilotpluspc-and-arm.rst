@@ -17,4 +17,19 @@ Copilot+ PC は Arm 固有ではない?
    AMD（102）
    Qualcomm（62）
 
-どうも Qualcomm が劣勢であるようです。
+以下は 2026/01/20 現在の様子です。
+
+.. code-block:: text
+
+   CPUメーカー
+   Intel（157）
+   AMD（147）
+   Qualcomm（70）
+
+   NPU
+   Intel AI Boost（157）
+   AMD Ryzen AI（147）
+   Qualcomm Hexagon（70）
+
+
+未だ Qualcomm が劣勢であるようです。

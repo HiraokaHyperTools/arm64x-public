@@ -48,6 +48,7 @@ Arm 版 Windows 11 では…
    dsd-tech-sh-u09g
    chilison-hdmi-capture-usb-z37
    play-blu-ray-disc/index
+   forti-client-vpn
 
 事情あり
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -57,6 +58,8 @@ Arm 版 Windows 11 では…
 
    dcp-j982n
    ir-adv-c3835
+   ricoh-sp-2300-sfl
+   localdb/index
 
 利用できず
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -69,6 +72,14 @@ Arm 版 Windows 11 では…
    startech-com-1p3fp-usb-serial
    akfsd-07
    fp-rd2
+
+別表
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. toctree::
+   :maxdepth: 1
+
+   printer-drivers/index
 
 未確認または確認中
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
