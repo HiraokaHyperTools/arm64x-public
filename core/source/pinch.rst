@@ -7,6 +7,7 @@
    copilotpluspc-and-arm
    copilotpluspc-spec
    yahoo-news
+   windows-promotion
    sense-of-danger
    error
    compat-core
