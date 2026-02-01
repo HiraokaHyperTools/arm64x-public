@@ -11,3 +11,4 @@ TOC
    pinch
    process-interop-odbc-issue
    at-dev-dept
+   appendix/index

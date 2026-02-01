@@ -30,8 +30,8 @@ RICOH SP 2300SFL
 スキャン
 ----------------------------------
 
-`Windows スキャン <https://apps.microsoft.com/detail/9wzdncrfj3pv?hl=ja-JP&gl=US>`_ を使用しました。
-Windows では WIA (Windows Image Acquisition) 対応デバイスとして認識されるようです。
+`Windows スキャン <https://apps.microsoft.com/detail/9wzdncrfj3pv?hl=ja-JP&gl=US>`__ を使用しました。
+Windows では :ref:`wia` 対応デバイスとして認識されるようです。
 Mopria eSCL 対応スキャナーを ``IPP over USB`` 経由で認識したものと思われます。
 詳細は、わかりません
 

@@ -6,14 +6,14 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TortoiseGit 2.17.0.2 &mdash; Arm64X  ドキュメント</title>
+  <title>付録 &mdash; Arm64X  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=a6a68382" />
       <link rel="stylesheet" type="text/css" href="../_static/fonts.css?v=5583d106" />
 
   
-    <link rel="canonical" href="https://kkdf2.sakura.ne.jp/arm64x/co/tortoise-git.html" />
+    <link rel="canonical" href="https://kkdf2.sakura.ne.jp/arm64x/appendix/index.html" />
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=c033477b"></script>
@@ -23,8 +23,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="OpenVPN 2.6.14" href="openvpn.html" />
-    <link rel="prev" title="Git for Windows 2.50.1" href="git-for-windows.html" /> 
+    <link rel="next" title="WIA (Windows Image Acquisition)" href="wia/index.html" />
+    <link rel="prev" title="DLL を配布する場合" href="../dist-dll.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,33 +47,13 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../pinch.html">危機感: Copilot+ PC と Arm</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../copilotpluspc-and-arm.html">Copilot+ PC は Arm 固有ではない?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../copilotpluspc-spec.html">Copilot+ PC の要件とは</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../yahoo-news.html">Yahoo!ニュース のコメント覧 など</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../windows-11-on-arm-promotion.html">Windows 11 on Arm 推進の動き</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../sense-of-danger.html">Deprecated features への危機感</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../error.html">錯誤</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../compat-core.html">互換性とは</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../compat-past.html">過去に体験した互換性の問題</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">互換性の問題 詳しく</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="index.html#id2">大雑把に</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html#id3">個別具体的に (検証結果)</a><ul class="current">
-<li class="toctree-l4 current"><a class="reference internal" href="index.html#id4">問題なし</a></li>
-<li class="toctree-l4"><a class="reference internal" href="index.html#id5">事情あり</a></li>
-<li class="toctree-l4"><a class="reference internal" href="index.html#id6">利用できず</a></li>
-<li class="toctree-l4"><a class="reference internal" href="index.html#id7">別表</a></li>
-<li class="toctree-l4"><a class="reference internal" href="index.html#id8">未確認または確認中</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../developer-wants.html">OSS で助けを必要としています</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../pinch.html">危機感: Copilot+ PC と Arm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../process-interop-odbc-issue.html">EXE と DLL との関係 (プロセスの相互運用性)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../at-dev-dept.html">開発部の課題</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">付録</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">付録</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wia/index.html">WIA (Windows Image Acquisition)</a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -90,9 +70,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../pinch.html">危機感: Copilot+ PC と Arm</a></li>
-          <li class="breadcrumb-item"><a href="index.html">互換性の問題 詳しく</a></li>
-      <li class="breadcrumb-item active">TortoiseGit 2.17.0.2</li>
+      <li class="breadcrumb-item active">付録</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -101,19 +79,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="tortoisegit-2-17-0-2">
-<h1>TortoiseGit 2.17.0.2<a class="headerlink" href="#tortoisegit-2-17-0-2" title="Link to this heading"></a></h1>
-<p>問題なく動作しています。</p>
-<p><a class="reference external" href="https://tortoisegit.org/download/">Download – TortoiseGit – Windows Shell Interface to Git</a></p>
-<p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">ARM64</span> <span class="pre">Windows</span></code> を使用</p>
+  <section id="id1">
+<h1>付録<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="wia/index.html">WIA (Windows Image Acquisition)</a></li>
+</ul>
+</div>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="git-for-windows.html" class="btn btn-neutral float-left" title="Git for Windows 2.50.1" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="openvpn.html" class="btn btn-neutral float-right" title="OpenVPN 2.6.14" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../dist-dll.html" class="btn btn-neutral float-left" title="DLL を配布する場合" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="wia/index.html" class="btn btn-neutral float-right" title="WIA (Windows Image Acquisition)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
