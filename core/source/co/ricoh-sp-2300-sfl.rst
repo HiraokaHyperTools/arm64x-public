@@ -21,15 +21,11 @@ RICOH SP 2300SFL
 ``Microsoft IPP Class Driver`` です。
 白黒 A4 縦 片面印刷 での印刷しか確認していません
 
-.. image:: imgs/sp-2300sfl/s1.png
+.. image:: imgs/sp-2300sfl/lan-drv.png
 
-.. image:: imgs/sp-2300sfl/s2.png
+テスト印刷したものを、スキャンしました
 
-.. image:: imgs/sp-2300sfl/s3.png
-
-.. image:: imgs/sp-2300sfl/s4.png
-
-.. image:: imgs/sp-2300sfl/s5.png
+:download:`imgs/sp-2300sfl/test-page.png`
 
 スキャン
 ----------------------------------
@@ -39,14 +35,4 @@ Windows では WIA (Windows Image Acquisition) 対応デバイスとして認識
 Mopria eSCL 対応スキャナーを ``IPP over USB`` 経由で認識したものと思われます。
 詳細は、わかりません
 
-.. image:: imgs/sp-2300sfl/i1.png
-
-.. image:: imgs/sp-2300sfl/i2.png
-
-.. image:: imgs/sp-2300sfl/i3.png
-
-.. image:: imgs/sp-2300sfl/i4.png
-
-テスト印刷したものを、スキャンしました
-
-:download:`imgs/sp-2300sfl/scan.png`
+.. image:: imgs/sp-2300sfl/scan-app.png

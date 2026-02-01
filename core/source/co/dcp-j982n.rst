@@ -32,6 +32,8 @@ LAN で接続し ``Microsoft IPP Class Driver`` 対応プリンターとして�
 
 テスト印刷もできました。
 
+:download:`imgs/j982n/test-page.png`
+
 USB 接続
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

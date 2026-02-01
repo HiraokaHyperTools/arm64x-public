@@ -49,6 +49,7 @@ Arm 版 Windows 11 では…
    chilison-hdmi-capture-usb-z37
    play-blu-ray-disc/index
    forti-client-vpn
+   konicaminolta-bizhub-c227
 
 事情あり
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
