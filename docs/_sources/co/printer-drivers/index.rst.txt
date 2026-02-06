@@ -38,6 +38,9 @@
        | N/A [#f3]_
      - | 2026-02-01 に確認済み
        | :doc:`../konicaminolta-bizhub-c227`
+   * - Fujifilm ApeosPort-VII C3322
+     - ?
+     - ?
 
 .. [#f1] 白黒 A4 縦 片面 で、ひとまず印刷できれば対応と判断
 .. [#f2] x64 版の Windows での動作と比較して、同等の機能提供が確認できれば対応と判断
