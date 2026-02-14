@@ -6,14 +6,14 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ATOK &mdash; Arm64X  ドキュメント</title>
+  <title>Google 日本語入力 &mdash; Arm64X  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=a6a68382" />
       <link rel="stylesheet" type="text/css" href="../_static/fonts.css?v=5583d106" />
 
   
-    <link rel="canonical" href="https://kkdf2.sakura.ne.jp/arm64x/co/atok-tech-ver-36.html" />
+    <link rel="canonical" href="https://kkdf2.sakura.ne.jp/arm64x/co/google-ime.html" />
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=c033477b"></script>
@@ -23,8 +23,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="Mozc" href="mozc.html" />
-    <link rel="prev" title="KONICA MINOLTA bizhub C227" href="konicaminolta-bizhub-c227.html" /> 
+    <link rel="next" title="プリンタードライバー対応状況" href="printer-drivers/index.html" />
+    <link rel="prev" title="SANWA SUPPLY 指紋認証リーダー FP-RD2" href="fp-rd2.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -59,9 +59,9 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">互換性の問題 詳しく</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="index.html#id2">大雑把に</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html#id3">個別具体的に (検証結果)</a><ul class="current">
-<li class="toctree-l4 current"><a class="reference internal" href="index.html#id4">問題なし</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index.html#id4">問題なし</a></li>
 <li class="toctree-l4"><a class="reference internal" href="index.html#id5">事情あり</a></li>
-<li class="toctree-l4"><a class="reference internal" href="index.html#id6">利用できず</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="index.html#id6">利用できず</a></li>
 <li class="toctree-l4"><a class="reference internal" href="index.html#id7">別表</a></li>
 <li class="toctree-l4"><a class="reference internal" href="index.html#id8">未確認または確認中</a></li>
 </ul>
@@ -92,7 +92,7 @@
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../pinch.html">危機感: Copilot+ PC と Arm</a></li>
           <li class="breadcrumb-item"><a href="index.html">互換性の問題 詳しく</a></li>
-      <li class="breadcrumb-item active">ATOK</li>
+      <li class="breadcrumb-item active">Google 日本語入力</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -101,29 +101,28 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="atok">
-<h1>ATOK<a class="headerlink" href="#atok" title="Link to this heading"></a></h1>
-<p>ATOK Tech Ver.36 (2026-02-02) の試用版で、対応している事を確認しました。</p>
-<p>サンプルアプリ MFCRichEditPad で評価しました。</p>
+  <section id="google">
+<h1>Google 日本語入力<a class="headerlink" href="#google" title="Link to this heading"></a></h1>
+<p>2026-02-15 現在、未対応です。</p>
+<p>インストールの最中にエラーが発生し、完了できませんでした。</p>
+<img alt="../_images/inst-err-fs8.png" src="../_images/inst-err-fs8.png" />
+<p>ヘルプをクリックすると、ページを開きました。</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/HiraokaHyperTools/MFCRichEditPad/">HiraokaHyperTools/MFCRichEditPad</a></p></li>
+<li><p><a class="reference external" href="http://support.google.com/installer/?product=%7Bddccd2a9-025e-4142-bceb-f467b88cf830%7D&amp;error=1603">ヘルプ</a></p></li>
 </ul>
-<p>x86 アプリで</p>
-<img alt="../_images/atok-x86-fs8.png" src="../_images/atok-x86-fs8.png" />
-<p>x64 アプリで</p>
-<img alt="../_images/atok-x64-fs8.png" src="../_images/atok-x64-fs8.png" />
-<p>Arm64 アプリで</p>
-<img alt="../_images/atok-arm64-fs8.png" src="../_images/atok-arm64-fs8.png" />
-<p>Arm64EC アプリで</p>
-<img alt="../_images/atok-arm64ec-fs8.png" src="../_images/atok-arm64ec-fs8.png" />
-<p>問題ありませんでした。</p>
-<p>(お詫び) テキスト ストアからの読み取りと、その文脈を意識した変換には未対応と書いていましたが、対応していました。申し訳ございません (ATOK 2016 時点で既に対応)</p>
-<p><code class="docutils literal notranslate"><span class="pre">カーソル位置前後の文章を参照して変換する</span></code> の設定をオンにします。</p>
-<img alt="../_images/atok-settings-fs8.png" src="../_images/atok-settings-fs8.png" />
-<p>これがどういった機能であるかについては、ヘルプには説明がありましたが、公式サイトでは情報を見つけることはできませんでした。</p>
-<p>ヘルプの文言をもとに検索したところ、つぎのサイトが内容的に近い説明をしていました。</p>
+<p>Gboard ヘルプ コミュニティでは、この現象について、対応していないものと説明しています。</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://atok.com/other/support/howtouse/mac/mn/pgs/mn_tool_ev_ip_6_zengo.htm">環境設定：挿入ポイント前後の文章を参照して変換する</a></p></li>
+<li><p><a class="reference external" href="https://support.google.com/gboard/thread/281599756/win11%E3%81%A7%E3%82%B0%E3%83%BC%E3%82%B0%E3%83%AB%E6%97%A5%E6%9C%AC%E8%AA%9E%E5%85%A5%E5%8A%9B%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%A7%E3%81%8D%E3%81%AA%E3%81%84%E3%80%82?hl=ja">Win11でグーグル日本語入力がインストールできない。 - Gboard コミュニティ</a></p></li>
+</ul>
+<blockquote class="pull-quote">
+<div><p>Win11 と書かれていますが、本文に書かれています通り、ARM 版 Windows 11 をご利用のようです。</p>
+<p>現時点では、Google 日本語入力は ARM 版 Windows には対応しておりません。</p>
+<p>他社製品も対応しておらず、OS 標準のものしか利用できない状況となっています。</p>
+</div></blockquote>
+<p>対応を要望する声はあります</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://support.google.com/gboard/thread/144982364/arm64-%E7%89%88-windows-11-%E3%81%AE%E5%AF%BE%E5%BF%9C%E7%8A%B6%E6%B3%81%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6?hl=ja">ARM64 版 Windows 11 の対応状況について - Gboard コミュニティ</a></p></li>
+<li><p><a class="reference external" href="https://support.google.com/gboard/thread/392174904/%E3%80%90%E8%A6%81%E6%9C%9B%E3%80%91arm%E7%89%88windows%EF%BC%88surface-pro-11%EF%BC%89%E3%81%B8%E3%81%AE%E5%AF%BE%E5%BF%9C%E3%82%92%E3%81%8A%E9%A1%98%E3%81%84%E3%81%97%E3%81%BE%E3%81%99?hl=ja">【要望】ARM版Windows（Surface Pro 11）への対応をお願いします - Gboard コミュニティ</a></p></li>
 </ul>
 </section>
 
@@ -131,8 +130,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="konicaminolta-bizhub-c227.html" class="btn btn-neutral float-left" title="KONICA MINOLTA bizhub C227" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="mozc.html" class="btn btn-neutral float-right" title="Mozc" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="fp-rd2.html" class="btn btn-neutral float-left" title="SANWA SUPPLY 指紋認証リーダー FP-RD2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="printer-drivers/index.html" class="btn btn-neutral float-right" title="プリンタードライバー対応状況" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -6,14 +6,14 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ATOK &mdash; Arm64X  ドキュメント</title>
+  <title>Mozc &mdash; Arm64X  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=a6a68382" />
       <link rel="stylesheet" type="text/css" href="../_static/fonts.css?v=5583d106" />
 
   
-    <link rel="canonical" href="https://kkdf2.sakura.ne.jp/arm64x/co/atok-tech-ver-36.html" />
+    <link rel="canonical" href="https://kkdf2.sakura.ne.jp/arm64x/co/mozc.html" />
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=c033477b"></script>
@@ -23,8 +23,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="Mozc" href="mozc.html" />
-    <link rel="prev" title="KONICA MINOLTA bizhub C227" href="konicaminolta-bizhub-c227.html" /> 
+    <link rel="next" title="ブラザー DCP-J982N" href="dcp-j982n.html" />
+    <link rel="prev" title="ATOK" href="atok-tech-ver-36.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -92,7 +92,7 @@
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../pinch.html">危機感: Copilot+ PC と Arm</a></li>
           <li class="breadcrumb-item"><a href="index.html">互換性の問題 詳しく</a></li>
-      <li class="breadcrumb-item active">ATOK</li>
+      <li class="breadcrumb-item active">Mozc</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -101,38 +101,57 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="atok">
-<h1>ATOK<a class="headerlink" href="#atok" title="Link to this heading"></a></h1>
-<p>ATOK Tech Ver.36 (2026-02-02) の試用版で、対応している事を確認しました。</p>
+  <section id="mozc">
+<h1>Mozc<a class="headerlink" href="#mozc" title="Link to this heading"></a></h1>
+<p>2026-02-15 現在、対応している事を確認しました <a class="footnote-reference brackets" href="#mozc-build" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="mozc-build" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>確認したビルド: <a class="reference external" href="https://github.com/google/mozc/commit/a99841e37b7459d08e5736c3613a6bcd393c9e92">Replace const vector&amp; with appropriate alternatives. · google/mozc&#64;a99841e</a></p>
+</aside>
+</aside>
 <p>サンプルアプリ MFCRichEditPad で評価しました。</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/HiraokaHyperTools/MFCRichEditPad/">HiraokaHyperTools/MFCRichEditPad</a></p></li>
 </ul>
 <p>x86 アプリで</p>
-<img alt="../_images/atok-x86-fs8.png" src="../_images/atok-x86-fs8.png" />
+<img alt="../_images/mozc-x86-fs8.png" src="../_images/mozc-x86-fs8.png" />
 <p>x64 アプリで</p>
-<img alt="../_images/atok-x64-fs8.png" src="../_images/atok-x64-fs8.png" />
+<img alt="../_images/mozc-x64-fs8.png" src="../_images/mozc-x64-fs8.png" />
 <p>Arm64 アプリで</p>
-<img alt="../_images/atok-arm64-fs8.png" src="../_images/atok-arm64-fs8.png" />
+<img alt="../_images/mozc-arm64-fs8.png" src="../_images/mozc-arm64-fs8.png" />
 <p>Arm64EC アプリで</p>
-<img alt="../_images/atok-arm64ec-fs8.png" src="../_images/atok-arm64ec-fs8.png" />
-<p>問題ありませんでした。</p>
-<p>(お詫び) テキスト ストアからの読み取りと、その文脈を意識した変換には未対応と書いていましたが、対応していました。申し訳ございません (ATOK 2016 時点で既に対応)</p>
-<p><code class="docutils literal notranslate"><span class="pre">カーソル位置前後の文章を参照して変換する</span></code> の設定をオンにします。</p>
-<img alt="../_images/atok-settings-fs8.png" src="../_images/atok-settings-fs8.png" />
-<p>これがどういった機能であるかについては、ヘルプには説明がありましたが、公式サイトでは情報を見つけることはできませんでした。</p>
-<p>ヘルプの文言をもとに検索したところ、つぎのサイトが内容的に近い説明をしていました。</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://atok.com/other/support/howtouse/mac/mn/pgs/mn_tool_ev_ip_6_zengo.htm">環境設定：挿入ポイント前後の文章を参照して変換する</a></p></li>
-</ul>
+<img alt="../_images/mozc-arm64ec-fs8.png" src="../_images/mozc-arm64ec-fs8.png" />
+<p>但し、 Mozc は公式バイナリーを提供していません。 GitHub レポジトリ <a class="reference external" href="https://github.com/google/mozc">google/mozc: Mozc - a Japanese Input Method Editor designed for multi-platform</a> で説明されているように、 OSS Mozc project には品質保証が伴わないため、 安定版という概念がない、 ということのようです:</p>
+<blockquote class="pull-quote">
+<div><p>As described in <a class="reference external" href="https://github.com/google/mozc/blob/master/docs/about_branding.md">About Branding</a> page, Google does not promise any official QA for OSS Mozc project. Because of this, Mozc does not have a concept of <em>Stable Release</em>. Instead we change version number every time when we introduce non-trivial change. If you are interested in packaging Mozc source code, or developing your own products based on Mozc, feel free to pick up any version. They should be equally stable (or equally unstable) in terms of no official QA process.</p>
+</div></blockquote>
+<p>では、ビルドされたものが存在しないのかというと、そうでもありません。</p>
+<p><a class="reference external" href="https://github.com/google/mozc/blob/master/docs/build_mozc_in_windows.md#build-with-github-actions">mozc/docs/build_mozc_in_windows.md at master · google/mozc</a> の説明によると、 自己責任で利用できるバイナリパッケージが存在します:</p>
+<blockquote class="pull-quote">
+<div><p>You can also find Mozc Installers for Windows in the google/mozc repository. Please keep in mind that Mozc is not an officially supported Google product, even if downloaded from <a class="reference external" href="https://github.com/google/mozc/">https://github.com/google/mozc/</a>.</p>
+<ol class="arabic simple">
+<li><p>Sign in GitHub.</p></li>
+<li><p>Check <a class="reference external" href="https://github.com/google/mozc/actions/workflows/windows.yaml?query=is%3Asuccess">recent successful Windows runs</a> in the google/mozc repository.</p></li>
+<li><p>Find an action from the last 90 days and click it.</p></li>
+<li><p>Download Mozc64.msi from the action result page if you are using 64-bit Windows.</p></li>
+</ol>
+</div></blockquote>
+<p>要約:</p>
+<ol class="arabic simple">
+<li><p>GitHub へサインインします (サインインしないと Artifacts のダウンロードができません)</p></li>
+<li><p>GitHub Actions の <a class="reference external" href="https://github.com/google/mozc/actions/workflows/windows.yaml?query=is%3Asuccess">recent successful Windows runs</a> を参照します。</p></li>
+<li><p>直近の成功しているビルド (通常は一番上の workflow run result) を開きます。</p></li>
+<li><p>画面下部に Artifacts <code class="docutils literal notranslate"><span class="pre">Mozc64_arm64.msi</span></code> のダウンロードが提供されています。 これを入手し、展開し、インストールします。</p></li>
+</ol>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="konicaminolta-bizhub-c227.html" class="btn btn-neutral float-left" title="KONICA MINOLTA bizhub C227" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="mozc.html" class="btn btn-neutral float-right" title="Mozc" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="atok-tech-ver-36.html" class="btn btn-neutral float-left" title="ATOK" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dcp-j982n.html" class="btn btn-neutral float-right" title="ブラザー DCP-J982N" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

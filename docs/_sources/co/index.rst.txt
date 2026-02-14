@@ -51,6 +51,7 @@ Arm 版 Windows 11 では…
    forti-client-vpn
    konicaminolta-bizhub-c227
    atok-tech-ver-36
+   mozc
 
 事情あり
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -74,6 +75,7 @@ Arm 版 Windows 11 では…
    startech-com-1p3fp-usb-serial
    akfsd-07
    fp-rd2
+   google-ime
 
 別表
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
