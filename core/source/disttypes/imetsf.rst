@@ -111,3 +111,41 @@ NSIS スクリプトでは、プラットフォームを判別するための条
    FunctionEnd
    
    ; ...
+
+IME テスト用アプリ
+-------------------------------------------------
+
+IME の機能性をテストするためのサンプルアプリを用意しました。
+
+- `HiraokaHyperTools/MFCRichEditPad <https://github.com/HiraokaHyperTools/MFCRichEditPad>`__
+
+リッチ エディット コントロール を使用しています。
+
+- `リッチ エディット コントロールについて - Win32 apps | Microsoft Learn <https://learn.microsoft.com/ja-jp/windows/win32/controls/about-rich-edit-controls>`__
+
+リッチ エディット バージョン 4.1 より Text Services Framework (TSF) のサポートが含まれます との記述があり、 TSF との相性確認ができそうです。
+
+CRichEditView の派生クラスをビューとして利用していて、
+使用しているウィンドウ クラスは RICHEDIT50W です。
+
+- `CRichEditView クラス | Microsoft Learn <https://learn.microsoft.com/ja-jp/cpp/mfc/reference/cricheditview-class?view=msvc-170>`__
+
+その昔、 ワードパッド という リッチ エディット コントロール の動作を確認できる便利なアプリがありましたが、もうありません。
+
+- `Windows クライアントの非推奨の機能 | Microsoft Learn <https://learn.microsoft.com/ja-jp/windows/whats-new/deprecated-features>`__
+
+.. pull-quote::
+
+  ワードパッドは更新されなくなり、今後の Windows リリースで削除される予定です。 .doc や.rtfなどのリッチ テキスト ドキュメントには Microsoft Word、.txt などのプレーン テキスト ドキュメントには Windows メモ帳を使用することをお勧めします。
+
+  [Update - March 2024]: ワードパッドは、Windows 11 バージョン 24H2 および Windows Server 2025 以降のすべてのエディションの Windows から削除されます。 開発者で、影響を受けるバイナリに関する情報が必要な場合は、「 非推奨の機能のリソース」を参照してください。
+
+MFCRichEditPad は、ワードパッドの互換品ではないため RTF ファイルの読み書きはできません。
+
+そのため、プラットフォームごとの リッチ エディット コントロール の動作用途にのみ利用できます。
+
+``Setup_MFCRichEditPad.exe`` に、各種バイナリーを同梱しています: ``x86``, ``x64``, ``Arm64``, ``Arm64EC``, ``Arm64X``
+
+ワードパッドの互換品であれば WordPad2010 の方が適しているかもしれません。
+
+- `HiraokaHyperTools/WordPad2010 <https://github.com/HiraokaHyperTools/WordPad2010>`__
