@@ -142,10 +142,12 @@ CRichEditView の派生クラスをビューとして利用していて、
 
 MFCRichEditPad は、ワードパッドの互換品ではないため RTF ファイルの読み書きはできません。
 
-そのため、プラットフォームごとの リッチ エディット コントロール の動作用途にのみ利用できます。
+そのため、プラットフォームごとの リッチ エディット コントロール の動作確認の用途にのみ利用できます。
 
 ``Setup_MFCRichEditPad.exe`` に、各種バイナリーを同梱しています: ``x86``, ``x64``, ``Arm64``, ``Arm64EC``, ``Arm64X``
 
 ワードパッドの互換品であれば WordPad2010 の方が適しているかもしれません。
 
 - `HiraokaHyperTools/WordPad2010 <https://github.com/HiraokaHyperTools/WordPad2010>`__
+
+但し WordPad2010 で使用しているウィンドウ クラスは RichEdit20A です。
