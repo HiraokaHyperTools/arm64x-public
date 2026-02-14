@@ -105,15 +105,26 @@
 <li><p>64 ビット (x64) の EXE / DLL は、これらの組み合わせでのみ動作します</p></li>
 <li><p>64 ビット (Arm64) の EXE / DLL は、これらの組み合わせでのみ動作します</p></li>
 </ul>
+<img alt="_images/exe-dll1.png" src="_images/exe-dll1.png" />
 </section>
 <section id="arm-windows-11">
 <h2>Arm 版 Windows 11<a class="headerlink" href="#arm-windows-11" title="Link to this heading"></a></h2>
-<p>Arm 版 Windows 11 では 2 種類 (x64, Arm64) の 64 ビットアプリをサポートしています。この場合は、どのようになりますか。</p>
+<p>Arm 版 Windows 11 では 3 種類 (x64, Arm64, Arm64EC) の 64 ビットアプリをサポートしています。この場合は、どのようになりますか。</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">x64</span></code> アプリを起動した場合は <code class="docutils literal notranslate"><span class="pre">x64</span></code> バイナリー (EXE, DLL) のみロードできます</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x64</span></code> アプリを起動した場合は <code class="docutils literal notranslate"><span class="pre">x64</span></code> or <code class="docutils literal notranslate"><span class="pre">Arm64EC</span></code> バイナリー (EXE, DLL) のみロードできます</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Arm64EC</span></code> アプリを起動した場合は <code class="docutils literal notranslate"><span class="pre">x64</span></code> or <code class="docutils literal notranslate"><span class="pre">Arm64EC</span></code> バイナリー (EXE, DLL) のみロードできます</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Arm64</span></code> アプリを起動した場合は <code class="docutils literal notranslate"><span class="pre">Arm64</span></code> バイナリー (EXE, DLL) のみロードできます</p></li>
 </ul>
-<p>留意点として Arm64 &amp; x64 両方の特徴を併せ持った <code class="docutils literal notranslate"><span class="pre">Arm64X</span></code> バイナリー (EXE, DLL) が存在します。</p>
+<img alt="_images/exe-dll2.png" src="_images/exe-dll2.png" />
+<p>Arm64EC は、 x64 のサブセット (一部分) であると考えることができます。</p>
+<img alt="_images/exe-dll3.png" src="_images/exe-dll3.png" />
+<p>Arm64EC バイナリーは 2026-02-14 現在、 Windows では Windows 11 on Arm (あるいはその後継 OS) のみでしか動作しないバイナリーです。 それ以外の OS では動作しない点に注意が必要です。</p>
+<p><a class="reference external" href="https://learn.microsoft.com/ja-jp/windows/arm/arm64ec">ARM 上の ARM64EC for Windows 11 アプリ | Microsoft Learn</a></p>
+<blockquote class="pull-quote">
+<div><p>Arm64EC は、Windows 11 の Arm デバイスで実行されているアプリ用の新しいアプリケーション バイナリ インターフェイス (ABI) です。 Windows 11 SDK を使用する必要がある Windows 11 機能であり、Arm 上の Windows 10 では使用できません。</p>
+</div></blockquote>
+<p>留意点として Arm64 &amp; Arm64EC 両方の特徴を併せ持った <code class="docutils literal notranslate"><span class="pre">Arm64X</span></code> バイナリー (EXE, DLL) が存在します。</p>
+<img alt="_images/exe-dll4.png" src="_images/exe-dll4.png" />
 </section>
 </section>
 

@@ -78,10 +78,10 @@ Arm64EC の落とし穴
 
 Arm64EC
 
-- Arm64EC とは x64 バイナリー (exe, dll) の事です。
+- Arm64EC とは、端的には x64 バイナリー (exe, dll) の事です。
 - 但し Arm 版 Windows 11 でしか動作しません。
 
-`ARM 上の ARM64EC for Windows 11 アプリ | Microsoft Learn <https://learn.microsoft.com/ja-jp/windows/arm/arm64ec>`_
+`ARM 上の ARM64EC for Windows 11 アプリ | Microsoft Learn <https://learn.microsoft.com/ja-jp/windows/arm/arm64ec>`__
 
 .. pull-quote::
 
