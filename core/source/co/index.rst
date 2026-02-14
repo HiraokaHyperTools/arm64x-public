@@ -50,6 +50,7 @@ Arm 版 Windows 11 では…
    play-blu-ray-disc/index
    forti-client-vpn
    konicaminolta-bizhub-c227
+   atok-tech-ver-36
 
 事情あり
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
