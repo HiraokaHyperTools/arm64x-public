@@ -257,14 +257,14 @@
 <div><p>ワードパッドは更新されなくなり、今後の Windows リリースで削除される予定です。 .doc や.rtfなどのリッチ テキスト ドキュメントには Microsoft Word、.txt などのプレーン テキスト ドキュメントには Windows メモ帳を使用することをお勧めします。</p>
 <p>[Update - March 2024]: ワードパッドは、Windows 11 バージョン 24H2 および Windows Server 2025 以降のすべてのエディションの Windows から削除されます。 開発者で、影響を受けるバイナリに関する情報が必要な場合は、「 非推奨の機能のリソース」を参照してください。</p>
 </div></blockquote>
-<p>MFCRichEditPad は、ワードパッドの互換品ではないため RTF ファイルの読み書きはできません。</p>
+<p>MFCRichEditPad は、ワードパッドの互換品ではないため RTF ファイルの読み書きはできません。 複合ファイル形式の何かが読み書きされます。</p>
 <p>そのため、プラットフォームごとの リッチ エディット コントロール の動作確認の用途にのみ利用できます。</p>
 <p><code class="docutils literal notranslate"><span class="pre">Setup_MFCRichEditPad.exe</span></code> に、各種バイナリーを同梱しています: <code class="docutils literal notranslate"><span class="pre">x86</span></code>, <code class="docutils literal notranslate"><span class="pre">x64</span></code>, <code class="docutils literal notranslate"><span class="pre">Arm64</span></code>, <code class="docutils literal notranslate"><span class="pre">Arm64EC</span></code>, <code class="docutils literal notranslate"><span class="pre">Arm64X</span></code></p>
 <p>ワードパッドの互換品であれば WordPad2010 の方が適しているかもしれません。</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/HiraokaHyperTools/WordPad2010">HiraokaHyperTools/WordPad2010</a></p></li>
 </ul>
-<p>但し WordPad2010 で使用しているウィンドウ クラスは RichEdit20A です。</p>
+<p>但し WordPad2010 で使用している リッチ エディット コントロール の ウィンドウ クラス は RichEdit20A と、古いものです。</p>
 </section>
 </section>
 

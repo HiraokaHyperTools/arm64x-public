@@ -140,7 +140,7 @@ CRichEditView の派生クラスをビューとして利用していて、
 
   [Update - March 2024]: ワードパッドは、Windows 11 バージョン 24H2 および Windows Server 2025 以降のすべてのエディションの Windows から削除されます。 開発者で、影響を受けるバイナリに関する情報が必要な場合は、「 非推奨の機能のリソース」を参照してください。
 
-MFCRichEditPad は、ワードパッドの互換品ではないため RTF ファイルの読み書きはできません。
+MFCRichEditPad は、ワードパッドの互換品ではないため RTF ファイルの読み書きはできません。 複合ファイル形式の何かが読み書きされます。
 
 そのため、プラットフォームごとの リッチ エディット コントロール の動作確認の用途にのみ利用できます。
 
@@ -150,4 +150,4 @@ MFCRichEditPad は、ワードパッドの互換品ではないため RTF ファ
 
 - `HiraokaHyperTools/WordPad2010 <https://github.com/HiraokaHyperTools/WordPad2010>`__
 
-但し WordPad2010 で使用しているウィンドウ クラスは RichEdit20A です。
+但し WordPad2010 で使用している リッチ エディット コントロール の ウィンドウ クラス は RichEdit20A と、古いものです。
