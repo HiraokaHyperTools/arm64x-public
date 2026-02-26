@@ -52,6 +52,8 @@ Arm 版 Windows 11 では…
    konicaminolta-bizhub-c227
    atok-tech-ver-36
    mozc
+   imgburn
+   buffalo-dvsm-puv8u3-bk-n
 
 事情あり
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
