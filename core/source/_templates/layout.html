@@ -1,11 +1,13 @@
 {% extends "!layout.html" %}
 
 {% block extrahead %}
-  <rsl xmlns="https://rslstandard.org/rsl">
-    <content url="/">
-      <license>
-        <permits type="usage">all</permits>
-      </license>
-    </content>
-  </rsl>
+  <script type="application/rsl+xml">
+    <rsl xmlns="https://rslstandard.org/rsl">
+      <content url="">
+        <license>
+          <permits type="usage">all</permits>
+        </license>
+      </content>
+    </rsl>
+  </script>
 {% endblock %}
