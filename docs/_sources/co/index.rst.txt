@@ -54,6 +54,7 @@ Arm 版 Windows 11 では…
    mozc
    imgburn
    buffalo-dvsm-puv8u3-bk-n
+   eset-home-se
 
 事情あり
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
