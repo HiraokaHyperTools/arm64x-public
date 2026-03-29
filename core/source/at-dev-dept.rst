@@ -78,8 +78,8 @@ Arm64EC の落とし穴
 
 Arm64EC
 
-- Arm64EC とは、端的には x64 バイナリー (exe, dll) の事です。
-- 但し Arm 版 Windows 11 でしか動作しません。
+- Arm64EC とは、端的には AArch64 のコードが格納されたバイナリー (exe, dll) の事です。 コードの出入口付近に x64 コードの仕込みはありますが、 基本は AArch64 向けの ARM64 ネイティブなコードです。 ※ 長い間、勘違いしていました。申し訳ございません。
+- そのため実行するには Arm CPU を搭載したパソコンが必須であり、 Arm 版 Windows 11 でしか動作しません。
 
 `ARM 上の ARM64EC for Windows 11 アプリ | Microsoft Learn <https://learn.microsoft.com/ja-jp/windows/arm/arm64ec>`__
 
@@ -93,6 +93,7 @@ Arm64EC
 
    - → c0000005 エラーにより起動しない
    - → Arm64EC バイナリを Windows 10 向けに配布してはいけない!
+
 - Arm64EC のアプリを配布して x64 版 Windows 11 で実行しようとした
 
    - → c0000005 エラーにより起動しない

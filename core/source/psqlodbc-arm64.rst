@@ -79,7 +79,7 @@ Microsoft Access で確認します。
 
 想定通りの結果になりました。
 
-Arm64EC (x64) バイナリーである ``MSACCESS.EXE`` は、
+Arm64EC (x64 エミュレーション互換) バイナリーである ``MSACCESS.EXE`` は、
 Arm64 バイナリーである psqlODBC との互換性がありません。
 
 そのため psqlODBC のロードに失敗しました。
