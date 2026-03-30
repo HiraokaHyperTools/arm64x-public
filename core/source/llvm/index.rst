@@ -231,6 +231,10 @@ loader.c
    TLS Callback fired (ARM64EC)
    DLL loaded successfully: tls_callback.arm64x.dll
 
+参考までに Windows の DLL で TLS callback を利用するものに
+``C:\Windows\System32\mshtml.dll``
+があります。
+
 Arm64X 純粋フォワーダー DLL の生成
 -------------------------------------
 
