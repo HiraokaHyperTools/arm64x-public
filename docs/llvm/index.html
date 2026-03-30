@@ -63,6 +63,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">付録</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">LLVM Arm64X 対応状況</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">生成について</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arm64x-exe">Arm64X EXE の生成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tls-callback-arm64x-dll">TLS callback を実装する Arm64X DLL の生成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arm64x-dll">Arm64X 純粋フォワーダー DLL の生成</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
@@ -104,6 +107,245 @@ Arm64X バイナリーの生成に対応している事を確認しました。<
 <li><p><code class="docutils literal notranslate"><span class="pre">.CRT$XLB</span></code> セクションおよび <code class="docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">comment</span> <span class="pre">(linker,</span> <span class="pre">&quot;-arm64xsameaddress:__dyn_tls_init&quot;)</span></code> の指定により TLS callback を実装する Arm64X DLL の生成</p></li>
 <li><p>Arm64X 純粋フォワーダー DLL の生成</p></li>
 </ul>
+</section>
+<section id="arm64x-exe">
+<h2>Arm64X EXE の生成<a class="headerlink" href="#arm64x-exe" title="Link to this heading"></a></h2>
+<p>main.c</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="cp">#if defined(_M_ARM64EC)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello, World! (Arm64EC)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="cp">#elif defined(_M_ARM64)</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello, World! (Arm64)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="cp">#else</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello, World!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="cp">#endif</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>ビルド コマンド</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>clang-cl --target=arm64ec-pc-windows-msvc main.c -c -o main.arm64ec.o
+clang-cl --target=aarch64-pc-windows-msvc main.c -c -o main.arm64.o
+
+lld-link /machine:arm64   /subsystem:console main.arm64.o                /out:main.arm64.exe
+lld-link /machine:arm64ec /subsystem:console main.arm64ec.o              /out:main.arm64ec.exe
+lld-link /machine:arm64x  /subsystem:console main.arm64.o main.arm64ec.o /out:main.arm64x.exe
+</pre></div>
+</div>
+<p>実行してみましょう。</p>
+<p><code class="docutils literal notranslate"><span class="pre">main.arm64.exe</span></code> は Arm64 バイナリーです。 <code class="docutils literal notranslate"><span class="pre">/machine</span> <span class="pre">arm64</span></code> では実行できて、 <code class="docutils literal notranslate"><span class="pre">/machine</span> <span class="pre">AMD64</span></code> では実行できないはずです。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>C:\Proj\arm64x-upon-llvm&gt; start /wait /b /machine arm64 main.arm64.exe
+Hello, World! (Arm64)
+
+C:\Proj\arm64x-upon-llvm&gt; start /wait /b /machine AMD64 main.arm64.exe
+このバージョンの C:\Proj\arm64x-upon-llvm\main.arm64.exe は、実行中の Windows のバージョンと互換性がありません。コンピューターのシステム情報を確認してから、ソフトウェアの発行元に問い合わせてください。
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">main.arm64ec.exe</span></code> は Arm64EC バイナリーです。 <code class="docutils literal notranslate"><span class="pre">/machine</span> <span class="pre">AMD64</span></code> では実行できて、 <code class="docutils literal notranslate"><span class="pre">/machine</span> <span class="pre">arm64</span></code> では実行できないはずです。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>C:\Proj\arm64x-upon-llvm&gt; start /wait /b /machine arm64 main.arm64ec.exe
+このバージョンの C:\Proj\arm64x-upon-llvm\main.arm64ec.exe は、実行中の Windows のバージョンと互換性がありません。コンピューターのシステム情報を確認してから、ソフトウェアの発行元に問い合わせてください。
+
+C:\Proj\arm64x-upon-llvm&gt; start /wait /b /machine AMD64 main.arm64ec.exe
+Hello, World! (Arm64EC)
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">main.arm64x.exe</span></code> は Arm64X バイナリーです。 <code class="docutils literal notranslate"><span class="pre">/machine</span> <span class="pre">arm64</span></code> でも <code class="docutils literal notranslate"><span class="pre">/machine</span> <span class="pre">AMD64</span></code> でも、いずれでも実行できるはずです。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>C:\Proj\arm64x-upon-llvm&gt; start /wait /b /machine arm64 main.arm64x.exe
+Hello, World! (Arm64)
+
+C:\Proj\arm64x-upon-llvm&gt; start /wait /b /machine AMD64 main.arm64x.exe
+Hello, World! (Arm64EC)
+</pre></div>
+</div>
+</section>
+<section id="tls-callback-arm64x-dll">
+<h2>TLS callback を実装する Arm64X DLL の生成<a class="headerlink" href="#tls-callback-arm64x-dll" title="Link to this heading"></a></h2>
+<p>tls_callback.c</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;windows.h&gt;</span>
+
+<span class="n">BOOL</span><span class="w"> </span><span class="n">APIENTRY</span><span class="w"> </span><span class="n">DllMain</span><span class="p">(</span>
+<span class="w">    </span><span class="n">HMODULE</span><span class="w"> </span><span class="n">hModule</span><span class="p">,</span>
+<span class="w">    </span><span class="n">DWORD</span><span class="w"> </span><span class="n">ul_reason_for_call</span><span class="p">,</span>
+<span class="w">    </span><span class="n">LPVOID</span><span class="w"> </span><span class="n">lpReserved</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">ul_reason_for_call</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">DLL_PROCESS_ATTACH</span><span class="p">:</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">DLL_THREAD_ATTACH</span><span class="p">:</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">DLL_THREAD_DETACH</span><span class="p">:</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">DLL_PROCESS_DETACH</span><span class="p">:</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">TRUE</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// https://isc.sans.edu/diary/32580</span>
+
+<span class="c1">// Declare TLS callback section</span>
+<span class="cp">#pragma section(&quot;.CRT$XLB&quot;, read)</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">PrintSomewhere</span><span class="p">(</span><span class="n">LPCSTR</span><span class="w"> </span><span class="n">msg</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">OutputDebugStringA</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">HANDLE</span><span class="w"> </span><span class="n">hStdOut</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetStdHandle</span><span class="p">(</span><span class="n">STD_OUTPUT_HANDLE</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hStdOut</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">INVALID_HANDLE_VALUE</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">WriteConsoleA</span><span class="p">(</span><span class="n">hStdOut</span><span class="p">,</span><span class="w"> </span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="n">lstrlenA</span><span class="p">(</span><span class="n">msg</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// TLS callback function</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">WINAPI</span><span class="w"> </span><span class="n">MyTlsCallback</span><span class="p">(</span><span class="n">PVOID</span><span class="w"> </span><span class="n">hModule</span><span class="p">,</span><span class="w"> </span><span class="n">DWORD</span><span class="w"> </span><span class="n">dwReason</span><span class="p">,</span><span class="w"> </span><span class="n">PVOID</span><span class="w"> </span><span class="n">pReserved</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dwReason</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">DLL_PROCESS_ATTACH</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="cp">#if defined(_M_ARM64EC)</span>
+<span class="w">        </span><span class="n">PrintSomewhere</span><span class="p">(</span><span class="s">&quot;TLS Callback fired (ARM64EC)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="cp">#elif defined(_M_ARM64)</span>
+<span class="w">        </span><span class="n">PrintSomewhere</span><span class="p">(</span><span class="s">&quot;TLS Callback fired (ARM64)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="cp">#else</span>
+<span class="w">        </span><span class="n">PrintSomewhere</span><span class="p">(</span><span class="s">&quot;TLS Callback fired</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="cp">#endif</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// https://github.com/ojdkbuild/tools_toolchain_vs2019bt_16113/blob/master/VC/Tools/MSVC/14.29.30133/crt/src/vcruntime/tlsdyn.cpp</span>
+
+<span class="cp">#ifdef _M_ARM64EC</span>
+<span class="cp">#pragma comment(linker, &quot;-arm64xsameaddress:MyTlsCallback&quot;)</span>
+<span class="cp">#endif</span>
+
+<span class="c1">// Force linker to include TLS directory symbol</span>
+<span class="cp">#ifdef _WIN64</span>
+<span class="cp">#pragma comment(linker, &quot;/INCLUDE:_tls_used&quot;)</span>
+<span class="cp">#pragma comment(linker, &quot;/INCLUDE:tls_callback_func&quot;)</span>
+<span class="cp">#else</span>
+<span class="cp">#pragma comment(linker, &quot;/INCLUDE:__tls_used&quot;)</span>
+<span class="cp">#pragma comment(linker, &quot;/INCLUDE:_tls_callback_func&quot;)</span>
+<span class="cp">#endif</span>
+
+<span class="c1">// Place pointer in TLS callback section (extern &quot;C&quot; prevents mangling)</span>
+<span class="kr">__declspec</span><span class="p">(</span><span class="n">allocate</span><span class="p">(</span><span class="s">&quot;.CRT$XLB&quot;</span><span class="p">))</span>
+<span class="n">PIMAGE_TLS_CALLBACK</span><span class="w"> </span><span class="n">tls_callback_func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MyTlsCallback</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>ビルド コマンド</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>clang-cl --target=aarch64-pc-windows-msvc tls_callback.c -c -o tls_callback.arm64.o
+clang-cl --target=arm64ec-pc-windows-msvc tls_callback.c -c -o tls_callback.arm64ec.o
+
+lld-link /dll /machine:arm64   /subsystem:windows /out:tls_callback.arm64.dll   tls_callback.arm64.o
+lld-link /dll /machine:arm64ec /subsystem:windows /out:tls_callback.arm64ec.dll tls_callback.arm64ec.o
+lld-link /dll /machine:arm64x  /subsystem:windows /out:tls_callback.arm64x.dll  tls_callback.arm64.o tls_callback.arm64ec.o
+</pre></div>
+</div>
+<p>loader.c</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;windows.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">argc</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Usage: %s &lt;DLL path&gt;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Attempting to load DLL: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="w">        </span><span class="n">HMODULE</span><span class="w"> </span><span class="n">hDLL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LoadLibraryA</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hDLL</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Failed to load DLL: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;DLL loaded successfully: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="w">            </span><span class="n">FreeLibrary</span><span class="p">(</span><span class="n">hDLL</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>ビルド コマンド</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>clang-cl --target=aarch64-pc-windows-msvc loader.c -o loader.arm64.exe
+clang-cl --target=arm64ec-pc-windows-msvc loader.c -o loader.arm64ec.exe
+</pre></div>
+</div>
+<p>実行してみましょう。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>C:\Proj\arm64x-upon-llvm&gt; loader.arm64.exe
+Usage: loader.arm64.exe &lt;DLL path&gt;
+
+C:\Proj\arm64x-upon-llvm&gt; loader.arm64.exe tls_callback.arm64.dll
+Attempting to load DLL: tls_callback.arm64.dll
+TLS Callback fired (ARM64)
+DLL loaded successfully: tls_callback.arm64.dll
+
+C:\Proj\arm64x-upon-llvm&gt; loader.arm64ec.exe tls_callback.arm64ec.dll
+Attempting to load DLL: tls_callback.arm64ec.dll
+TLS Callback fired (ARM64EC)
+DLL loaded successfully: tls_callback.arm64ec.dll
+
+C:\Proj\arm64x-upon-llvm&gt; loader.arm64.exe tls_callback.arm64x.dll
+Attempting to load DLL: tls_callback.arm64x.dll
+TLS Callback fired (ARM64)
+DLL loaded successfully: tls_callback.arm64x.dll
+
+C:\Proj\arm64x-upon-llvm&gt; loader.arm64ec.exe tls_callback.arm64x.dll
+Attempting to load DLL: tls_callback.arm64x.dll
+TLS Callback fired (ARM64EC)
+DLL loaded successfully: tls_callback.arm64x.dll
+</pre></div>
+</div>
+</section>
+<section id="arm64x-dll">
+<h2>Arm64X 純粋フォワーダー DLL の生成<a class="headerlink" href="#arm64x-dll" title="Link to this heading"></a></h2>
+<p>空のファイル <code class="docutils literal notranslate"><span class="pre">empty.c</span></code> を用意します。</p>
+<p>生成にあたっては、モジュールは実際に存在する必要はありません。
+架空のモジュールと、
+架空の関数名を指定して生成します。</p>
+<p>redir.x64.def</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>NAME redir
+EXPORTS
+ dummy=x64_redir.dummy
+</pre></div>
+</div>
+<p>redir.arm64.def</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>NAME redir
+EXPORTS
+ dummy=arm64_redir.dummy
+</pre></div>
+</div>
+<p>ビルド コマンド</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>clang-cl --target=arm64ec-pc-windows-msvc empty.c -c -o empty.arm64ec.o
+clang-cl --target=aarch64-pc-windows-msvc empty.c -c -o empty.arm64.o
+
+lld-link /dll /machine:arm64x /subsystem:windows /def:redir.x64.def /defArm64Native:redir.arm64.def empty.arm64.o empty.arm64ec.o /out:redir.arm64x.dll
+</pre></div>
+</div>
+<p>エクスポートを確認しましょう。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>C:\Proj\arm64x-upon-llvm&gt; ReadPEExportTable print-def redir.arm64x.dll
+LIBRARY redir.arm64x
+EXPORTS
+ dummy=arm64_redir.dummy
+
+C:\Proj\arm64x-upon-llvm&gt; ReadPEExportTable print-def redir.arm64x.dll --apply-dvrt
+LIBRARY redir.arm64x
+EXPORTS
+ dummy=x64_redir.dummy
+</pre></div>
+</div>
+<p>DVRT を適用することで、 Arm64EC 側のエクスポートテーブルを確認できます。</p>
+<p>DVRT を適用しない場合は、 Arm64 側のエクスポートテーブルを確認できます。</p>
+<p>ReadPEExportTable は、こちらです。</p>
+<p><a class="reference external" href="https://github.com/psqlodbc-for-win10-arm64/Toolings/tree/master/ReadPEExportTable">https://github.com/psqlodbc-for-win10-arm64/Toolings/tree/master/ReadPEExportTable</a></p>
+<p>あるいは Web 版をご利用ください。</p>
+<p><a class="reference external" href="https://psqlodbc-for-win10-arm64.github.io/IsArm64XWeb/exportdef">https://psqlodbc-for-win10-arm64.github.io/IsArm64XWeb/exportdef</a></p>
 </section>
 </section>
 
