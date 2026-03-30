@@ -23,3 +23,8 @@ DB Browser for SQLite
 -------------------------------------------------
 
 - `[Bug]: SQLite Browser runs under emulation on Windows ARM64 · Issue #3827 · sqlitebrowser/sqlitebrowser <https://github.com/sqlitebrowser/sqlitebrowser/issues/3827>`_
+
+Rust
+-------------------------------------------------
+
+- `ARM64EC static libraries fail when linked into ARM64X DLLs · Issue #145154 · rust-lang/rust <https://github.com/rust-lang/rust/issues/145154>`__
