@@ -61,6 +61,7 @@
 <li class="toctree-l1"><a class="reference internal" href="at-dev-dept.html">開発部の課題</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix/index.html">付録</a></li>
 <li class="toctree-l1"><a class="reference internal" href="llvm/index.html">LLVM Arm64X 対応状況</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rust/index.html">Rust Arm64X 対応状況</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">ライセンス</a></li>
 </ul>
 
@@ -97,13 +98,53 @@
 <li class="toctree-l2"><a class="reference internal" href="copilotpluspc-and-arm.html">Copilot+ PC は Arm 固有ではない?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="copilotpluspc-spec.html">Copilot+ PC の要件とは</a></li>
 <li class="toctree-l2"><a class="reference internal" href="yahoo-news.html">Yahoo!ニュース のコメント覧 など</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windows-11-on-arm-promotion.html">Windows 11 on Arm 推進の動き</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sense-of-danger.html">Deprecated features への危機感</a></li>
-<li class="toctree-l2"><a class="reference internal" href="error.html">錯誤</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows-11-on-arm-promotion.html">Windows 11 on Arm 推進の動き</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="windows-11-on-arm-promotion.html#id1">2026-03-12</a></li>
+<li class="toctree-l3"><a class="reference internal" href="windows-11-on-arm-promotion.html#id2">2026-01-26</a></li>
+<li class="toctree-l3"><a class="reference internal" href="windows-11-on-arm-promotion.html#id3">2026-01-22</a></li>
+<li class="toctree-l3"><a class="reference internal" href="windows-11-on-arm-promotion.html#id4">2025-12-17</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sense-of-danger.html">Deprecated features への危機感</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sense-of-danger.html#arm">Arm...</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sense-of-danger.html#id1">Deprecated features 入りする傾向</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sense-of-danger.html#eol-end-of-life">EOL (End of Life)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sense-of-danger.html#id2">関与</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="error.html">錯誤</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="error.html#arm-cpu">Arm CPU への期待</a></li>
+<li class="toctree-l3"><a class="reference internal" href="error.html#id2">固執の謎</a></li>
+<li class="toctree-l3"><a class="reference internal" href="error.html#id3">ビジネスモデルと思惑</a></li>
+<li class="toctree-l3"><a class="reference internal" href="error.html#id4">2 本仕立ての危うさ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="error.html#win32">Win32 デスクトップ環境への期待と信頼</a></li>
+<li class="toctree-l3"><a class="reference internal" href="error.html#arm-windows-11">Arm 版 Windows 11 の立ち位置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="error.html#windows-subsystem-for-android">Windows Subsystem for Android</a></li>
+<li class="toctree-l3"><a class="reference internal" href="error.html#win32-x86-x64">Win32 (x86 &amp; x64) デスクトップの強み</a></li>
+<li class="toctree-l3"><a class="reference internal" href="error.html#id6">50% 発言の話</a></li>
+<li class="toctree-l3"><a class="reference internal" href="error.html#id7">市場の狭さ</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="compat-core.html">互換性とは</a></li>
-<li class="toctree-l2"><a class="reference internal" href="compat-past.html">過去に体験した互換性の問題</a></li>
-<li class="toctree-l2"><a class="reference internal" href="co/index.html">互換性の問題 詳しく</a></li>
-<li class="toctree-l2"><a class="reference internal" href="developer-wants.html">OSS で助けを必要としています</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compat-past.html">過去に体験した互換性の問題</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="compat-past.html#ms-dos-windows">MS-DOS から Windows への移行 について</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compat-past.html#windows-9x-windows-nt">Windows 9x から Windows NT への移行 について</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compat-past.html#amd64-not-ia64">32 ビットから 64 ビット (AMD64, not IA64) への移行について</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="co/index.html">互換性の問題 詳しく</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="co/index.html#id2">大雑把に</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co/index.html#id3">個別具体的に (検証結果)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="developer-wants.html">OSS で助けを必要としています</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="developer-wants.html#sqlite-vec">sqlite-vec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer-wants.html#psqlodbc">psqlodbc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer-wants.html#mariadb-connector-odbc">MariaDB Connector/ODBC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer-wants.html#db-browser-for-sqlite">DB Browser for SQLite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer-wants.html#rust">Rust</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="process-interop-odbc-issue.html">EXE と DLL との関係 (プロセスの相互運用性)</a><ul>
@@ -113,7 +154,14 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="at-dev-dept.html">開発部の課題</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#arm64-arm64x">Arm64 / Arm64X 対応方針の案について</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#arm64-arm64x">Arm64 / Arm64X 対応方針の案について</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="disttypes/standalone.html">スタンドロンのアプリを配布したい</a></li>
+<li class="toctree-l3"><a class="reference internal" href="disttypes/imetsf.html">IME &amp; TSF を配布したい</a></li>
+<li class="toctree-l3"><a class="reference internal" href="disttypes/odbcdriver.html">ODBC ドライバーを配布したい</a></li>
+<li class="toctree-l3"><a class="reference internal" href="disttypes/activexcontrol.html">ActiveX コントロールを配布したい</a></li>
+<li class="toctree-l3"><a class="reference internal" href="disttypes/comcomponent.html">COM コンポーネントを配布したい</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#arm64x">Arm64X とは</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#id2">Arm64 と Arm64X</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#arm64-exe">Arm64 バイナリー (EXE) で充分な場合</a></li>
@@ -123,7 +171,12 @@
 <li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#arm64ec">Arm64EC の落とし穴</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#id4">Arm64 バイナリーではダメなのか (Arm64X が必要な理由)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#id5">Arm64X バイナリーの判別方法について</a></li>
-<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#psqlodbc-arm64">psqlODBC を実際に Arm64 環境で使用してみる</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#psqlodbc-arm64">psqlODBC を実際に Arm64 環境で使用してみる</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="psqlodbc-x64.html">psqlodbc_x64.msi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="psqlodbc-arm64.html">psqlodbc_arm64.msi (Arm64)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="psqlodbc-arm64x.html">psqlodbc_arm64.msi (Arm64X)</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#mariadb-connector-odbc-arm64x">mariadb-connector-odbc Arm64X 対応版</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#id6">Arm64X バイナリーのビルド方法について</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#oss">OSS のビルドシステム</a></li>
@@ -134,11 +187,20 @@
 <li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#id9">レガシーコードと最新のコンパイラー</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#windows-11">Windows 11 との互換性</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#id10">ビルドシステムの改修とコストの問題</a></li>
-<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#id11">セットアップの構築案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at-dev-dept.html#id11">セットアップの構築案</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dist-exe.html">EXE を配布する場合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dist-dll.html">DLL を配布する場合</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="appendix/index.html">付録</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="appendix/wia/index.html">WIA (Windows Image Acquisition)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix/wia/index.html">WIA (Windows Image Acquisition)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendix/wia/index.html#id1">概要</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix/wia/index.html#id2">WIA 対応アプリの例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appendix/wia/index.html#id3">スクショ</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="llvm/index.html">LLVM Arm64X 対応状況</a><ul>
@@ -146,6 +208,10 @@
 <li class="toctree-l2"><a class="reference internal" href="llvm/index.html#arm64x-exe">Arm64X EXE の生成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="llvm/index.html#tls-callback-arm64x-dll">TLS callback を実装する Arm64X DLL の生成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="llvm/index.html#arm64x-dll">Arm64X 純粋フォワーダー DLL の生成</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rust/index.html">Rust Arm64X 対応状況</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rust/index.html#id1">生成について</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">ライセンス</a></li>

@@ -6,11 +6,12 @@ Arm64X
 TOC
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    pinch
    process-interop-odbc-issue
    at-dev-dept
    appendix/index
    llvm/index
+   rust/index
    license
