@@ -6,14 +6,14 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rust Arm64X 対応状況 &mdash; Arm64X  ドキュメント</title>
+  <title>エラーと修正時期 &mdash; Arm64X  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=a6a68382" />
       <link rel="stylesheet" type="text/css" href="../_static/fonts.css?v=5583d106" />
 
   
-    <link rel="canonical" href="https://hiraokahypertools.github.io/arm64x-public/rust/index.html" />
+    <link rel="canonical" href="https://hiraokahypertools.github.io/arm64x-public/llvm/fix-timeline.html" />
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=c033477b"></script>
@@ -23,8 +23,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="ライセンス" href="../license.html" />
-    <link rel="prev" title="エラーと修正時期" href="../llvm/fix-timeline.html" />
+    <link rel="next" title="Rust Arm64X 対応状況" href="../rust/index.html" />
+    <link rel="prev" title="LLVM Arm64X 対応状況" href="index.html" />
   <script type="application/rsl+xml">
     <rsl xmlns="https://rslstandard.org/rsl">
       <content url="">
@@ -61,11 +61,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../process-interop-odbc-issue.html">EXE と DLL との関係 (プロセスの相互運用性)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../at-dev-dept.html">開発部の課題</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">付録</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../llvm/index.html">LLVM Arm64X 対応状況</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Rust Arm64X 対応状況</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">生成について</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">LLVM Arm64X 対応状況</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#id1">生成について</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">エラーと修正時期</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">22.1.0 で修正を確認</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">21.1.0 で修正を確認</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">20.1.0 で修正を確認</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#arm64x-exe">Arm64X EXE の生成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#tls-callback-arm64x-dll">TLS callback を実装する Arm64X DLL の生成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#arm64x-dll">Arm64X 純粋フォワーダー DLL の生成</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rust/index.html">Rust Arm64X 対応状況</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
 </ul>
 
@@ -83,7 +94,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Rust Arm64X 対応状況</li>
+          <li class="breadcrumb-item"><a href="index.html">LLVM Arm64X 対応状況</a></li>
+      <li class="breadcrumb-item active">エラーと修正時期</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -92,18 +104,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="rust-arm64x">
-<h1>Rust Arm64X 対応状況<a class="headerlink" href="#rust-arm64x" title="Link to this heading"></a></h1>
-<section id="id1">
-<h2>生成について<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
-<p>(2026-04-02 現在)</p>
-<p><code class="docutils literal notranslate"><span class="pre">rustc</span> <span class="pre">1.94.1</span> <span class="pre">(e408947bf</span> <span class="pre">2026-03-25)</span></code> では、 既知の問題があります。 そのため、 未対応と判断します。</p>
+  <section id="id1">
+<h1>エラーと修正時期<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<section id="id2">
+<h2>22.1.0 で修正を確認<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/rust-lang/rust/issues/145154">ARM64EC static libraries fail when linked into ARM64X DLLs · Issue #145154 · rust-lang/rust</a></p></li>
+<li><p><a class="reference external" href="https://github.com/llvm/llvm-project/issues/168119">ARM64EC code ranges broken · Issue #168119 · llvm/llvm-project</a></p></li>
 </ul>
-<p>一方で、 こちらのプルリクエスト 148799 を適用した Rust であれば、 正常なバイナリーが生成できることを確認しました。</p>
+</section>
+<section id="id3">
+<h2>21.1.0 で修正を確認<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/rust-lang/rust/pull/148799">Switch the destructors implementation for thread locals on Windows to use FLS by ohadravid · Pull Request #148799 · rust-lang/rust</a></p></li>
+<li><p><a class="reference external" href="https://github.com/llvm/llvm-project/issues/131712">[lld-link] linker option error: -arm64xsameaddress:__dyn_tls_dtor is not allowed in .drectve (msvcrt.lib(tlsdtor.obj)) · Issue #131712 · llvm/llvm-project</a></p></li>
+</ul>
+</section>
+<section id="id4">
+<h2>20.1.0 で修正を確認<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/llvm/llvm-project/issues/113658">[lld-link][arm64ec] error: msvcrtd.lib: machine type arm64 conflicts with arm64ec · Issue #113658 · llvm/llvm-project</a></p></li>
 </ul>
 </section>
 </section>
@@ -112,8 +130,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../llvm/fix-timeline.html" class="btn btn-neutral float-left" title="エラーと修正時期" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../license.html" class="btn btn-neutral float-right" title="ライセンス" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="LLVM Arm64X 対応状況" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../rust/index.html" class="btn btn-neutral float-right" title="Rust Arm64X 対応状況" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

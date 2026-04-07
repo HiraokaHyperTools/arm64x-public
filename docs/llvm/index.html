@@ -23,7 +23,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="Rust Arm64X 対応状況" href="../rust/index.html" />
+    <link rel="next" title="エラーと修正時期" href="fix-timeline.html" />
     <link rel="prev" title="Arm64X は fat binary か" href="../appendix/fat/index.html" />
   <script type="application/rsl+xml">
     <rsl xmlns="https://rslstandard.org/rsl">
@@ -62,7 +62,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../at-dev-dept.html">開発部の課題</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">付録</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">LLVM Arm64X 対応状況</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">生成について</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">生成について</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fix-timeline.html">エラーと修正時期</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#arm64x-exe">Arm64X EXE の生成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tls-callback-arm64x-dll">TLS callback を実装する Arm64X DLL の生成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#arm64x-dll">Arm64X 純粋フォワーダー DLL の生成</a></li>
@@ -102,6 +105,17 @@
 <p>(2026-03-31 現在)</p>
 <p><code class="docutils literal notranslate"><span class="pre">24</span> <span class="pre">March</span> <span class="pre">2026:</span> <span class="pre">LLVM</span> <span class="pre">22.1.2</span></code> にて、
 Arm64X バイナリーの生成に対応している事を確認しました。</p>
+<p>また、 過去のバージョンに遡行して検証していくことで、 最初に対応したバージョンが <code class="docutils literal notranslate"><span class="pre">LLVM</span> <span class="pre">22.1.0</span></code> である事を確認しました。</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="fix-timeline.html">エラーと修正時期</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fix-timeline.html#id2">22.1.0 で修正を確認</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fix-timeline.html#id3">21.1.0 で修正を確認</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fix-timeline.html#id4">20.1.0 で修正を確認</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <p>確認できたバリエーション:</p>
 <ul class="simple">
 <li><p>通常の Arm64X EXE ならびに Arm64X DLL の生成</p></li>
@@ -358,7 +372,7 @@ EXPORTS
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../appendix/fat/index.html" class="btn btn-neutral float-left" title="Arm64X は fat binary か" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../rust/index.html" class="btn btn-neutral float-right" title="Rust Arm64X 対応状況" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="fix-timeline.html" class="btn btn-neutral float-right" title="エラーと修正時期" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
