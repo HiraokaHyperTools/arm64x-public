@@ -1,0 +1,353 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>22.1.0 での TLS callback 検証 &mdash; Arm64X  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=a6a68382" />
+      <link rel="stylesheet" type="text/css" href="../_static/fonts.css?v=5583d106" />
+
+  
+    <link rel="canonical" href="https://hiraokahypertools.github.io/arm64x-public/llvm/tls-callback-22-1-0.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c033477b"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=4755f45a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="21.1.0 での TLS callback 検証" href="tls-callback-21-1-0.html" />
+    <link rel="prev" title="エラーと修正時期" href="fix-timeline.html" />
+  <script type="application/rsl+xml">
+    <rsl xmlns="https://rslstandard.org/rsl">
+      <content url="">
+        <license>
+          <permits type="usage">all</permits>
+        </license>
+      </content>
+    </rsl>
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Arm64X
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../pinch.html">危機感: Copilot+ PC と Arm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../process-interop-odbc-issue.html">EXE と DLL との関係 (プロセスの相互運用性)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../at-dev-dept.html">開発部の課題</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">付録</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">LLVM Arm64X 対応状況</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#id1">生成について</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="fix-timeline.html">エラーと修正時期</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="fix-timeline.html#id2">22.1.0 で修正を確認</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fix-timeline.html#id3">21.1.0 で修正を確認</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fix-timeline.html#id4">20.1.0 で修正を確認</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#arm64x-exe">Arm64X EXE の生成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#tls-callback-arm64x-dll">TLS callback を実装する Arm64X DLL の生成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#arm64x-dll">Arm64X 純粋フォワーダー DLL の生成</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rust/index.html">Rust Arm64X 対応状況</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">ライセンス</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Arm64X</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">LLVM Arm64X 対応状況</a></li>
+          <li class="breadcrumb-item"><a href="fix-timeline.html">エラーと修正時期</a></li>
+      <li class="breadcrumb-item active">22.1.0 での TLS callback 検証</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tls-callback">
+<h1>22.1.0 での TLS callback 検証<a class="headerlink" href="#tls-callback" title="Link to this heading"></a></h1>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>C:\Proj\arm64x-upon-llvm&gt;clang-cl --target=aarch64-pc-windows-msvc tls_callback.c -c -o tls_callback.arm64.o
+
+C:\Proj\arm64x-upon-llvm&gt;clang-cl --target=arm64ec-pc-windows-msvc tls_callback.c -c -o tls_callback.arm64ec.o
+
+C:\Proj\arm64x-upon-llvm&gt;
+C:\Proj\arm64x-upon-llvm&gt;lld-link /machine:arm64   /subsystem:windows /dll tls_callback.arm64.o                        /out:tls_callback.arm64.dll
+
+C:\Proj\arm64x-upon-llvm&gt;lld-link /machine:arm64ec /subsystem:windows /dll tls_callback.arm64ec.o                      /out:tls_callback.arm64ec.dll
+
+C:\Proj\arm64x-upon-llvm&gt;lld-link /machine:arm64x  /subsystem:windows /dll tls_callback.arm64.o tls_callback.arm64ec.o /out:tls_callback.arm64x.dll
+
+C:\Proj\arm64x-upon-llvm&gt;
+C:\Proj\arm64x-upon-llvm&gt;loader.arm64.exe tls_callback.arm64.dll
+Attempting to load DLL: tls_callback.arm64.dll
+TLS Callback fired (ARM64)
+DLL loaded successfully: tls_callback.arm64.dll
+
+C:\Proj\arm64x-upon-llvm&gt;loader.arm64ec.exe tls_callback.arm64ec.dll
+Attempting to load DLL: tls_callback.arm64ec.dll
+TLS Callback fired (ARM64EC)
+DLL loaded successfully: tls_callback.arm64ec.dll
+
+C:\Proj\arm64x-upon-llvm&gt;loader.arm64.exe tls_callback.arm64x.dll
+Attempting to load DLL: tls_callback.arm64x.dll
+TLS Callback fired (ARM64)
+DLL loaded successfully: tls_callback.arm64x.dll
+
+C:\Proj\arm64x-upon-llvm&gt;loader.arm64ec.exe tls_callback.arm64x.dll
+Attempting to load DLL: tls_callback.arm64x.dll
+TLS Callback fired (ARM64EC)
+DLL loaded successfully: tls_callback.arm64x.dll
+</pre></div>
+</div>
+<p>検証結果は良好です。 確認の結果、問題は見つかりませんでした。</p>
+<p>Arm64X での TLS callback 実装については MSFT link.exe と同様の実装方針を選択したようです。</p>
+<p>TLS callback のポイント先にトランポリンを設置しています。
+Arm64EC 利用時には (DVRT の適用によって) トランポリンのジャンプ先が変更されています。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>C:\Proj\arm64x-upon-llvm&gt; C:\Proj\psqlodbc-for-win10-arm64\Toolings\InspectTLSCallback\bin\Debug\net8.0\InspectTLSCallback.exe inspect tls_callback.arm64x.dll
+# Before apply Dvrt
+
+              AA64 machine
+                 2 CHPE Version
+
+  0000000180039001 Start of raw data
+  0000000180039003 End of raw data
+  0000000180033524 Address of index
+  000000018002DF28 Address of callbacks
+                 0 Size of zero fill
+          00000000 Characteristics
+
+    TLS Callbacks
+
+    Address
+    ----------------
+    00000001800211B8      ARM64
+    0000000000000000
+
+    VirtualAddress   | 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
+    -----------------|------------------------------------------------
+    00000001800211B8 | 10 FF FF 90 10 D2 02 91 00 02 1F D6 E6 9F BA AD
+    00000001800211C8 | E8 27 01 AD EA 2F 02 AD EC 37 03 AD EE 3F 04 AD
+    00000001800211D8 | FD 7B 0A A9 FD 83 02 91 20 01 3F D6 E8 03 00 AA
+    00000001800211E8 | 69 00 00 90 20 19 47 F9 FD 7B 4A A9 EE 3F 44 AD
+
+    AArch64 disassembly by AsmArm64
+    ---
+    00000001800211B8: 90FFFF10  adrp x16, #-131072
+    00000001800211BC: 9102D210  add x16, x16, #180
+    00000001800211C0: D61F0200  br x16
+    00000001800211C4: ADBA9FE6  stp q6, q7, [sp, #-176]!
+    00000001800211C8: AD0127E8  stp q8, q9, [sp, #32]
+    00000001800211CC: AD022FEA  stp q10, q11, [sp, #64]
+    00000001800211D0: AD0337EC  stp q12, q13, [sp, #96]
+    00000001800211D4: AD043FEE  stp q14, q15, [sp, #128]
+    00000001800211D8: A90A7BFD  stp x29, x30, [sp, #160]
+    00000001800211DC: 910283FD  add x29, sp, #160
+    00000001800211E0: D63F0120  blr x9
+    00000001800211E4: AA0003E8  mov x8, x0
+    00000001800211E8: 90000069  adrp x9, #49152
+    00000001800211EC: F9471920  ldr x0, [x9, #3632]
+    00000001800211F0: A94A7BFD  ldp x29, x30, [sp, #160]
+    00000001800211F4: AD443FEE  ldp q14, q15, [sp, #128]
+
+    Navigate to the destination at 00000001800010B4
+
+      VirtualAddress   | 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
+      -----------------|------------------------------------------------
+      00000001800010B4 | FF C3 00 D1 FE 13 00 F9 E2 0F 00 F9 E1 17 00 B9
+      00000001800010C4 | E0 07 00 F9 E8 17 40 B9 08 05 00 71 C1 00 00 54
+      00000001800010D4 | 01 00 00 14 40 01 00 F0 00 00 03 91 D5 FF FF 97
+      00000001800010E4 | 01 00 00 14 FE 13 40 F9 FF C3 00 91 C0 03 5F D6
+
+      AArch64 disassembly by AsmArm64
+      ---
+      00000001800010B4: D100C3FF  sub sp, sp, #48
+      00000001800010B8: F90013FE  str x30, [sp, #32]
+      00000001800010BC: F9000FE2  str x2, [sp, #24]
+      00000001800010C0: B90017E1  str w1, [sp, #20]
+      00000001800010C4: F90007E0  str x0, [sp, #8]
+      00000001800010C8: B94017E8  ldr w8, [sp, #20]
+      00000001800010CC: 71000508  subs w8, w8, #1
+      00000001800010D0: 540000C1  b.ne #24
+      00000001800010D4: 14000001  #0:
+      00000001800010D8: F0000140  adrp x0, #176128
+      00000001800010DC: 91030000  add x0, x0, #192
+      00000001800010E0: 97FFFFD5  bl #-172
+      00000001800010E4: 14000001  #0:
+      00000001800010E8: F94013FE  ldr x30, [sp, #32]
+      00000001800010EC: 9100C3FF  add sp, sp, #48
+      00000001800010F0: D65F03C0  ret
+
+# After apply Dvrt
+
+              8664 machine
+                 2 CHPE Version
+                   This is an Arm64EC! (chpeVersion == 2 &amp;&amp; header.Machine == 0x8664)
+
+  0000000180039001 Start of raw data
+  0000000180039003 End of raw data
+  0000000180033524 Address of index
+  000000018002DF28 Address of callbacks
+                 0 Size of zero fill
+          00000000 Characteristics
+
+    TLS Callbacks
+
+    Address
+    ----------------
+    00000001800211B8      RtlIsEcCode = true (ARM64EC)
+    0000000000000000
+
+    VirtualAddress   | 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
+    -----------------|------------------------------------------------
+    00000001800211B8 | 90 FF FF 90 10 02 03 91 00 02 1F D6 E6 9F BA AD
+    00000001800211C8 | E8 27 01 AD EA 2F 02 AD EC 37 03 AD EE 3F 04 AD
+    00000001800211D8 | FD 7B 0A A9 FD 83 02 91 20 01 3F D6 E8 03 00 AA
+    00000001800211E8 | 69 00 00 90 20 19 47 F9 FD 7B 4A A9 EE 3F 44 AD
+
+    AArch64 disassembly by AsmArm64
+    ---
+    00000001800211B8: 90FFFF90  adrp x16, #-65536
+    00000001800211BC: 91030210  add x16, x16, #192
+    00000001800211C0: D61F0200  br x16
+    00000001800211C4: ADBA9FE6  stp q6, q7, [sp, #-176]!
+    00000001800211C8: AD0127E8  stp q8, q9, [sp, #32]
+    00000001800211CC: AD022FEA  stp q10, q11, [sp, #64]
+    00000001800211D0: AD0337EC  stp q12, q13, [sp, #96]
+    00000001800211D4: AD043FEE  stp q14, q15, [sp, #128]
+    00000001800211D8: A90A7BFD  stp x29, x30, [sp, #160]
+    00000001800211DC: 910283FD  add x29, sp, #160
+    00000001800211E0: D63F0120  blr x9
+    00000001800211E4: AA0003E8  mov x8, x0
+    00000001800211E8: 90000069  adrp x9, #49152
+    00000001800211EC: F9471920  ldr x0, [x9, #3632]
+    00000001800211F0: A94A7BFD  ldp x29, x30, [sp, #160]
+    00000001800211F4: AD443FEE  ldp q14, q15, [sp, #128]
+
+    Navigate to the destination at 00000001800110C0
+
+      VirtualAddress   | 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
+      -----------------|------------------------------------------------
+      00000001800110C0 | FF C3 00 D1 FE 13 00 F9 E2 0F 00 F9 E1 17 00 B9
+      00000001800110D0 | E0 07 00 F9 E8 17 40 B9 08 05 00 71 C1 00 00 54
+      00000001800110E0 | 01 00 00 14 C0 00 00 F0 00 80 02 91 D4 FF FF 97
+      00000001800110F0 | 01 00 00 14 FE 13 40 F9 FF C3 00 91 C0 03 5F D6
+
+      AArch64 disassembly by AsmArm64
+      ---
+      00000001800110C0: D100C3FF  sub sp, sp, #48
+      00000001800110C4: F90013FE  str x30, [sp, #32]
+      00000001800110C8: F9000FE2  str x2, [sp, #24]
+      00000001800110CC: B90017E1  str w1, [sp, #20]
+      00000001800110D0: F90007E0  str x0, [sp, #8]
+      00000001800110D4: B94017E8  ldr w8, [sp, #20]
+      00000001800110D8: 71000508  subs w8, w8, #1
+      00000001800110DC: 540000C1  b.ne #24
+      00000001800110E0: 14000001  #0:
+      00000001800110E4: F00000C0  adrp x0, #110592
+      00000001800110E8: 91028000  add x0, x0, #160
+      00000001800110EC: 97FFFFD4  bl #-176
+      00000001800110F0: 14000001  #0:
+      00000001800110F4: F94013FE  ldr x30, [sp, #32]
+      00000001800110F8: 9100C3FF  add sp, sp, #48
+      00000001800110FC: D65F03C0  ret
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>C:\Proj\arm64x-upon-llvm&gt; C:\Proj\psqlodbc-for-win10-arm64\Toolings\InspectTLSCallback\bin\Debug\net8.0\InspectTLSCallback.exe chpe tls_callback.arm64x.dll
+                 2 CHPE Version
+
+          00037000 Offset of Arm64X arm64x redirection metadata table
+                 1  Count of Arm64X arm64x redirection metadata table entries
+
+  000000018002DDFE Hybrid code address range table
+                 3 Hybrid code address range count
+
+  Hybrid Code Address Range Table
+
+              Address Range
+        ----------------------
+        arm64  0000000180001000 - 00000001800103B3 (00001000 - 000103B3)
+      arm64ec  0000000180011000 - 00000001800218A3 (00011000 - 000218A3)
+          x64  0000000180022000 - 000000018002300F (00022000 - 0002300F)
+
+  Arm64X Redirection Metadata Table
+
+        FFS Start           ARM64EC Address
+        ------------------------------------
+        0000000180023000 -&gt; 0000000180011F68
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fix-timeline.html" class="btn btn-neutral float-left" title="エラーと修正時期" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tls-callback-21-1-0.html" class="btn btn-neutral float-right" title="21.1.0 での TLS callback 検証" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, 2026, kenjiuno, HIRAOKA HYPER TOOLS, INC..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

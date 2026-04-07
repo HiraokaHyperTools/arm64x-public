@@ -6,14 +6,14 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>エラーと修正時期 &mdash; Arm64X  ドキュメント</title>
+  <title>20.1.0 での TLS callback 検証 &mdash; Arm64X  ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=a6a68382" />
       <link rel="stylesheet" type="text/css" href="../_static/fonts.css?v=5583d106" />
 
   
-    <link rel="canonical" href="https://hiraokahypertools.github.io/arm64x-public/llvm/fix-timeline.html" />
+    <link rel="canonical" href="https://hiraokahypertools.github.io/arm64x-public/llvm/tls-callback-20-1-0.html" />
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=c033477b"></script>
@@ -23,8 +23,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="検索" href="../search.html" />
-    <link rel="next" title="22.1.0 での TLS callback 検証" href="tls-callback-22-1-0.html" />
-    <link rel="prev" title="LLVM Arm64X 対応状況" href="index.html" />
+    <link rel="next" title="Rust Arm64X 対応状況" href="../rust/index.html" />
+    <link rel="prev" title="21.1.0 での TLS callback 検証" href="tls-callback-21-1-0.html" />
   <script type="application/rsl+xml">
     <rsl xmlns="https://rslstandard.org/rsl">
       <content url="">
@@ -63,10 +63,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../appendix/index.html">付録</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">LLVM Arm64X 対応状況</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#id1">生成について</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">エラーと修正時期</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">22.1.0 で修正を確認</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">21.1.0 で修正を確認</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">20.1.0 で修正を確認</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="fix-timeline.html">エラーと修正時期</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="fix-timeline.html#id2">22.1.0 で修正を確認</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fix-timeline.html#id3">21.1.0 で修正を確認</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="fix-timeline.html#id4">20.1.0 で修正を確認</a></li>
 </ul>
 </li>
 </ul>
@@ -95,7 +95,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">LLVM Arm64X 対応状況</a></li>
-      <li class="breadcrumb-item active">エラーと修正時期</li>
+          <li class="breadcrumb-item"><a href="fix-timeline.html">エラーと修正時期</a></li>
+      <li class="breadcrumb-item active">20.1.0 での TLS callback 検証</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -104,52 +105,55 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="id1">
-<h1>エラーと修正時期<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
-<section id="id2">
-<h2>22.1.0 で修正を確認<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/llvm/llvm-project/issues/168119">ARM64EC code ranges broken · Issue #168119 · llvm/llvm-project</a></p></li>
-</ul>
-<p>資料</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="tls-callback-22-1-0.html">22.1.0 での TLS callback 検証</a></li>
-</ul>
+  <section id="tls-callback">
+<h1>20.1.0 での TLS callback 検証<a class="headerlink" href="#tls-callback" title="Link to this heading"></a></h1>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>C:\Proj\arm64x-upon-llvm&gt;clang-cl --target=aarch64-pc-windows-msvc tls_callback.c -c -o tls_callback.arm64.o
+
+C:\Proj\arm64x-upon-llvm&gt;clang-cl --target=arm64ec-pc-windows-msvc tls_callback.c -c -o tls_callback.arm64ec.o
+
+C:\Proj\arm64x-upon-llvm&gt;
+C:\Proj\arm64x-upon-llvm&gt;lld-link /machine:arm64   /subsystem:windows /dll tls_callback.arm64.o                        /out:tls_callback.arm64.dll
+
+C:\Proj\arm64x-upon-llvm&gt;lld-link /machine:arm64ec /subsystem:windows /dll tls_callback.arm64ec.o                      /out:tls_callback.arm64ec.dll
+lld-link: warning: ignoring unknown argument: -arm64xsameaddress:MyTlsCallback
+lld-link: error: -arm64xsameaddress:MyTlsCallback is not allowed in .drectve (tls_callback.arm64ec.o)
+
+C:\Proj\arm64x-upon-llvm&gt;lld-link /machine:arm64x  /subsystem:windows /dll tls_callback.arm64.o tls_callback.arm64ec.o /out:tls_callback.arm64x.dll
+lld-link: warning: ignoring unknown argument: -arm64xsameaddress:MyTlsCallback
+lld-link: error: -arm64xsameaddress:MyTlsCallback is not allowed in .drectve (tls_callback.arm64ec.o)
+
+C:\Proj\arm64x-upon-llvm&gt;
+C:\Proj\arm64x-upon-llvm&gt;loader.arm64.exe tls_callback.arm64.dll
+Attempting to load DLL: tls_callback.arm64.dll
+TLS Callback fired (ARM64)
+DLL loaded successfully: tls_callback.arm64.dll
+
+C:\Proj\arm64x-upon-llvm&gt;loader.arm64ec.exe tls_callback.arm64ec.dll
+Attempting to load DLL: tls_callback.arm64ec.dll
+Failed to load DLL: tls_callback.arm64ec.dll
+
+C:\Proj\arm64x-upon-llvm&gt;loader.arm64.exe tls_callback.arm64x.dll
+Attempting to load DLL: tls_callback.arm64x.dll
+Failed to load DLL: tls_callback.arm64x.dll
+
+C:\Proj\arm64x-upon-llvm&gt;loader.arm64ec.exe tls_callback.arm64x.dll
+Attempting to load DLL: tls_callback.arm64x.dll
+Failed to load DLL: tls_callback.arm64x.dll
+</pre></div>
 </div>
-</section>
-<section id="id3">
-<h2>21.1.0 で修正を確認<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>Arm64EC バイナリーのリンクでエラーが発生しました:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/llvm/llvm-project/issues/131712">[lld-link] linker option error: -arm64xsameaddress:__dyn_tls_dtor is not allowed in .drectve (msvcrt.lib(tlsdtor.obj)) · Issue #131712 · llvm/llvm-project</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lld-link:</span> <span class="pre">warning:</span> <span class="pre">ignoring</span> <span class="pre">unknown</span> <span class="pre">argument:</span> <span class="pre">-arm64xsameaddress:MyTlsCallback</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lld-link:</span> <span class="pre">error:</span> <span class="pre">-arm64xsameaddress:MyTlsCallback</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">allowed</span> <span class="pre">in</span> <span class="pre">.drectve</span> <span class="pre">(tls_callback.arm64ec.o)</span></code></p></li>
 </ul>
-<p>資料</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="tls-callback-21-1-0.html">21.1.0 での TLS callback 検証</a></li>
-</ul>
-</div>
-</section>
-<section id="id4">
-<h2>20.1.0 で修正を確認<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/llvm/llvm-project/issues/113658">[lld-link][arm64ec] error: msvcrtd.lib: machine type arm64 conflicts with arm64ec · Issue #113658 · llvm/llvm-project</a></p></li>
-</ul>
-<p>資料</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="tls-callback-20-1-0.html">20.1.0 での TLS callback 検証</a></li>
-</ul>
-</div>
-</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="LLVM Arm64X 対応状況" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="tls-callback-22-1-0.html" class="btn btn-neutral float-right" title="22.1.0 での TLS callback 検証" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tls-callback-21-1-0.html" class="btn btn-neutral float-left" title="21.1.0 での TLS callback 検証" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../rust/index.html" class="btn btn-neutral float-right" title="Rust Arm64X 対応状況" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
