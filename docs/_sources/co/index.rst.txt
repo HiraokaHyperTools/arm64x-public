@@ -55,6 +55,7 @@ Arm 版 Windows 11 では…
    imgburn
    buffalo-dvsm-puv8u3-bk-n
    eset-home-se
+   sqlitebrowser
 
 事情あり
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

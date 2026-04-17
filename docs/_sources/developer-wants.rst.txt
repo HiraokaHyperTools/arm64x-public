@@ -24,6 +24,10 @@ DB Browser for SQLite
 
 - `[Bug]: SQLite Browser runs under emulation on Windows ARM64 · Issue #3827 · sqlitebrowser/sqlitebrowser <https://github.com/sqlitebrowser/sqlitebrowser/issues/3827>`_
 
+.. pull-quote::
+
+    解決しました。 詳細はこちら :ref:`sqlitebrowser_rst`
+
 Rust
 -------------------------------------------------
 
