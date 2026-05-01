@@ -1,6 +1,12 @@
 Windows 11 on Arm 推進の動き
 =======================================
 
+2026-05-01
+----------
+
+* `「Delphi 13.1」は「Arm64EC」をサポート ～ARM64へ移行するための架け橋となる技術 - 窓の杜 <https://forest.watch.impress.co.jp/docs/news/2105073.html>`__
+    * `Delphi 13.1 の新機能：Arm64EC（Windows on Arm）対応 - Support <https://docwiki.embarcadero.com/Support/ja/Delphi_13.1_%E3%81%AE%E6%96%B0%E6%A9%9F%E8%83%BD%EF%BC%9AArm64EC%EF%BC%88Windows_on_Arm%EF%BC%89%E5%AF%BE%E5%BF%9C>`__
+
 2026-03-12
 ----------
 

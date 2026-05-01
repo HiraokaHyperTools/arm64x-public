@@ -26,7 +26,7 @@ DB Browser for SQLite
 
 .. pull-quote::
 
-    解決しました。 詳細はこちら :ref:`sqlitebrowser_rst`
+    解決されました: :ref:`sqlitebrowser_rst`
 
 Rust
 -------------------------------------------------
