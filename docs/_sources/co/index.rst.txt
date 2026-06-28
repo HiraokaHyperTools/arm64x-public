@@ -56,6 +56,7 @@ Arm 版 Windows 11 では…
    buffalo-dvsm-puv8u3-bk-n
    eset-home-se
    sqlitebrowser
+   apeos-port-vii-c3322
 
 事情あり
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
