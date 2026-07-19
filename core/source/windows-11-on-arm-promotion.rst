@@ -1,6 +1,11 @@
 Windows 11 on Arm 推進の動き
 =======================================
 
+2026-07-16
+----------
+
+* `【特集】RTX Sparkでプラグマタ動作、NVIDIA製AI PCはゲーミングPCになるか - PC Watch <https://pc.watch.impress.co.jp/docs/topic/feature/2125864.html>`__
+
 2026-05-01
 ----------
 
